@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import PageDescription from '../components/pageDescription';
 import PropertiesLoader from '../components/propertiesLoader';
 const CountryPage = () =>{
-    const { country } = useParams();
-    const [properties, setProperties] = useState([])
+  const { country } = useParams();
+  const [properties, setProperties] = useState([])
   const fetchProperties =()=>{
     fetch(`http://localhost:8000/api/industrialProperties/find/${country}`)
     .then(response =>{
@@ -17,7 +17,6 @@ const CountryPage = () =>{
   useEffect(()=>{
     fetchProperties()
   },[])
-  console.log(country);
     return(
         <>
             <PageDescription data={country}/>

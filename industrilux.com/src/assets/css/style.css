@@ -141,7 +141,7 @@
     justify-content: space-between;
 }
 
-.mainNav ul{
+.ulNav{
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -153,4 +153,17 @@
 .mainNav ul li a{
     color: #f2f2f2;
     text-decoration: none;
+}
+
+/* PAGE DESCRIPTION */
+.pageDecription{
+    width: 85%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* PROPERTY PAGE */
+.propertyPageTexts{
+    width: 80%;
+    margin: 0 auto;
 }

@@ -6,7 +6,7 @@ function PropertiesLoader({properties}) {
     <section className="propertiesLoader">
         <div className="propertiesLoaderContainer">
         {properties.map(property =>(
-              <Link key={property._id} to={`es/bienes-raices-indusrieales/${property.urlCountry}/${property.urlProvince}/${property.urlCity}/${property.categoria}/${property.urlEs}`}>
+              <Link key={property._id} to={`/es/bienes-raices-indusrieales/${property.urlCountry}/${property.urlProvince}/${property.urlCity}/${property.categoria}/${property.urlEs}`}>
                 <div  className="propertyCard">
               <div className="propertyImgCard">
                 <img src="https>jad" alt="Image Flag" />
