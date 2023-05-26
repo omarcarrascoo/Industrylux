@@ -4,17 +4,8 @@ import { FaSearchLocation } from "react-icons/fa";
 import { Link, Outlet } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-
+import CategoryFilter from './categoryFilter'
 const Header = () =>{
-    
-    const [isOpen, setIsOpen] = useState(false);
-    const toggleMenu = () => {
-    setIsOpen(!isOpen);
-     };
-     const [isOpen2, setIsOpen2] = useState(false);
-     const toggleMenu2 = () => {
-     setIsOpen2(!isOpen2);
-      };
      
     const [countries, serCountries] = useState([])
     const fetchCountries =()=>{
@@ -29,6 +20,7 @@ const Header = () =>{
   useEffect(()=>{
     fetchCountries()
   },[])
+
   const [provinces, setProvinces] = useState([])
     const fetchProvinces =()=>{
     fetch('http://localhost:8000/api/provinces/')
@@ -42,14 +34,26 @@ const Header = () =>{
   useEffect(()=>{
     fetchProvinces()
   },[])
-  console.log(countries);
-
+  const [categories, setCategories] = useState([])
+  const fetchCategories =()=>{
+    fetch('http://localhost:8000/api/categories/')
+    .then(response =>{
+      return response.json()
+    })
+    .then(data =>{
+      setCategories(data)
+    })
+  }
+  useEffect(()=>{
+    fetchCategories()
+  },[])
+  console.log(categories);
     return(
         <>
         <header className="mainHeader">
             <div className="container">
                 <div className="mainHeaderLogo">
-                   <Link to="/"> <img src={logo} alt="Logo Industrylux" /></Link>
+                   <Link to="/"> <img src="http://localhost:8000/assets/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" /></Link>
                 </div>
                 <div className="searchBar">
                     <form className='searchBarContainer' action="POST">
@@ -58,28 +62,31 @@ const Header = () =>{
                 </form>
                 </div>
                     <nav className="mainNav">
-                        <ul className='ulNav'>
+                        <ul>
                             <li> 
-                                <button onClick={toggleMenu}>Properties</button>
+                                <a>Properties</a>
                                 <ul>
-                                {isOpen && countries.map(country =>(
+                                {countries.map(country =>(
                                 <li key={country._id}>
-                                            <button onClick={toggleMenu2}> {country.countryName}</button>
+                                            <Link to={`es/bienes-raices-indusrieales/${country.urlCountry}`}><a> {country.countryName}</a></Link>
                                             <ul>  
-                                            {isOpen2 && provinces
+                                            {provinces
                                                 .filter(province => province.country === country.urlCountry) // Filter provinces by country
                                                 .map(province => (
                                                 <li key={province._id}>
                                                     <Link to={`es/bienes-raices-indusrieales/${country.urlCountry}/${province.urlProvince}`}>
-                                                    <button>{province.provinceName}</button>
+                                                    <a>{province.provinceName}</a>
                                                     </Link>
                                                 </li>
                                                 ))
                                                 }
-                                            </ul>
+                                    </ul>
                                 </li>
                                  ))}
                                 </ul>
+                            </li>
+                            <li> 
+                                <CategoryFilter  categories= {categories}/>
                             </li>
                             <li><Link to="/es/bienes-raices-indusrieales/contacto">Contacto</Link></li>
                             <li><Link to="/en/Properities">English</Link></li></ul>

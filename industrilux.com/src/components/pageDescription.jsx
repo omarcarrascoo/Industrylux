@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 
 function pageDescription({data}) {
     
-        const { country } = useParams();
-        const [page, setPage] = useState([])
+      const { country } = useParams();
+      const [page, setPage] = useState([])
       const fetchPage =()=>{
         fetch(`http://localhost:8000/api/countries/findByName/${country}`)
         .then(response =>{

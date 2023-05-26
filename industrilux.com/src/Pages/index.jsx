@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import logo from '../assets/imgs/INDUSTRYLUX.jpg'
 import '../assets/css/style.css'
 import { Link } from 'react-router-dom'
 
@@ -27,7 +26,7 @@ function Index() {
       </header>
       <main className="index__main">
         <div className="index__main__logo">
-          <img src={logo} alt="industrilux logo jpg" />
+          <img src="http://localhost:8000/assets/images/logo-industrilux.jpg" alt="industrilux logo jpg" />
         </div>
         <div className="index__main__titles">
           <h1>INMOBILUX - MARKETING PARA BIENES RAÍCES ESPECIALES Y DE LUJO</h1>

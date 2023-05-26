@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
+import BannerLoader from '../components/bannerLoader';
 import PageDescription from '../components/pageDescription';
 import PropertiesLoader from '../components/propertiesLoader';  
 import Contacto from './Contacto';
@@ -21,10 +22,9 @@ useEffect(()=>{
 },[])
 const videoSrc = "https://youtu.be/pE3EuiyShoM"
   return (
+    <>
+    <BannerLoader img={properties.imgRoute}/>
     <section className="propertyPage">
-      <div className="propertyPageImg">
-        <img src="#" alt="Image Inmobilux" />
-      </div>
       <div className="propertyPageTexts">
           <h1>{properties.h1ES}</h1>
           <p>Clave: {properties._id}</p>
@@ -35,9 +35,9 @@ const videoSrc = "https://youtu.be/pE3EuiyShoM"
       <iframe width="560" height="315" src="https://www.youtube.com/embed/pE3EuiyShoM?controls=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
       </div>
       </div>
-      
       <Contacto/>
     </section>
+    </>
   )
 }
 

@@ -16,11 +16,17 @@ function Contacto() {
             <p>Contacto x WhatsApp</p>
             <p>O PROPORCIONE SUS DATOS PARA CONCERTAR UNA CITA</p>
             <form action="POST" className="contactForm">
+                <label htmlFor="name">Nombre:</label>
                 <input type="text" name="name" id="name" />
+                <label htmlFor="number">Celular: </label>
                 <input type="text" name="number" id="number" />
+                <label htmlFor="email">Email:</label>
                 <input type="email" name="email" id="email" />
+                <label htmlFor="mensaje">Mensaje:</label>
                 <textarea name="mensaje" id="mensaje" cols="30" rows="10"></textarea>
-                <button>Enviar</button>
+                <p>* Campos obligatorios.</p>
+                <p>NOTA: Una vez recibida su información, enviaremos un Email con los datos del Profesional que se encargará de atenderlo para una primer entrevista.</p>
+                <button className='btnMain'>Enviar</button>
             </form>
         </div>
         <div className="bottomImgs">
