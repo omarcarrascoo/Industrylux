@@ -1,24 +1,25 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import PageDescriptionC from '../components/PageDescriptionC';
+    import { useState, useEffect } from 'react';
+    import { useParams } from 'react-router-dom';
+    import PageDescriptionC from '../components/PageDescriptionC';
 import PropertiesLoader from '../components/propertiesLoader';
 
-const CategoryPage = () => {
-  const { urlProvince, category1 } = useParams();
+  const ProvincePage = () => {
+  const { urlProvince } = useParams();
   const [properties, setProperties] = useState([]);
   const [page, setPage] = useState([]);
-
-  const fetchPage = () => {
-    fetch(`/findPageProvinceCategory/${urlProvince}/${category1}`)
-      .then(response => response.json())
-      .then(data => setPage(data[0]));
-  };
 
   const fetchProperties = () => {
     fetch(`http://localhost:8000/api/industrialProperties/findByProvince/${urlProvince}`)
       .then(response => response.json())
       .then(data => setProperties(data));
   };
+
+  const fetchPage = () => {
+    fetch(`http://localhost:8000/api/provinces/findByUrl/${urlProvince}`)
+      .then(response => response.json())
+      .then(data => setPage(data[0]));
+  };
+
   useEffect(() => {
     fetchProperties();
     fetchPage();
@@ -32,4 +33,4 @@ const CategoryPage = () => {
   );
 };
 
-export default CategoryPage;
+export default ProvincePage;

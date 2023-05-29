@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 function pageDescriptionC({data}) {
     
-      
+  console.log(data);
   return (
     <section className="pageDecription">
         <div className="pageDescriptionContainer">

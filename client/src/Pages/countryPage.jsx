@@ -27,9 +27,9 @@ const CountryPage = () =>{
               <PropertyBanner img ={property.imgRoute}/>
             ))}
             </section>
-            <PageDescription data={country}/>
+            <PageDescription data={country} maxLength={20}/>
             <PropertiesLoader properties={properties}/>
-            <Contacto/>Industrylux_-1.jpg
+            <Contacto/>
         </>
     )
 }

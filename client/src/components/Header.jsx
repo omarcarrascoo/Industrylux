@@ -4,9 +4,10 @@ import { FaSearchLocation } from "react-icons/fa";
 import { Link, Outlet } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import CategoryFilter from './categoryFilter'
 const Header = () =>{
-     
+    const {urlProvince, urlCountry} = useParams()
     const [countries, serCountries] = useState([])
     const fetchCountries =()=>{
     fetch('http://localhost:8000/api/countries/')
@@ -36,7 +37,7 @@ const Header = () =>{
   },[])
   const [categories, setCategories] = useState([])
   const fetchCategories =()=>{
-    fetch('http://localhost:8000/api/categories/')
+    fetch(`http://localhost:8000/api/categories/${urlProvince}`)
     .then(response =>{
       return response.json()
     })
@@ -47,7 +48,6 @@ const Header = () =>{
   useEffect(()=>{
     fetchCategories()
   },[])
-  console.log(categories);
     return(
         <>
         <header className="mainHeader">
@@ -86,7 +86,14 @@ const Header = () =>{
                                 </ul>
                             </li>
                             <li> 
-                                <CategoryFilter  categories= {categories}/>
+                                {
+                                  urlProvince && <CategoryFilter categories={categories} urlProvince={urlProvince}urlCountry={urlCountry} />
+                                  // if(urlProvince){
+                                  //   <CategoryFilter  categories= {categories}/>
+                                  // }
+                                /* <CategoryFilter  categories= {categories}/> */
+                                }
+                                
                             </li>
                             <li><Link to="/es/bienes-raices-indusrieales/contacto">Contacto</Link></li>
                             <li><Link to="/en/Properities">English</Link></li></ul>
