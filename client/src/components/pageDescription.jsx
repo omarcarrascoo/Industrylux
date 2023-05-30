@@ -13,7 +13,7 @@ function pageDescription({data, maxLength}) {
       const { country } = useParams();
       const [page, setPage] = useState([])
       const fetchPage =()=>{
-        fetch(`http://localhost:8000/api/countries/findByName/${country}`)
+        fetch(`http://174.138.95.49/api/countries/findByName/${country}`)
         .then(response =>{
           return response.json()
         })

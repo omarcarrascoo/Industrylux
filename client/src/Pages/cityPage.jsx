@@ -9,13 +9,13 @@ import PropertiesLoader from '../components/propertiesLoader';
   const [page, setPage] = useState([]);
 
   const fetchProperties = () => {
-    fetch(`http://localhost:8000/api/industrialProperties/findByProvince/${urlProvince}`)
+    fetch(`http://174.138.95.49/api/industrialProperties/findByProvince/${urlProvince}`)
       .then(response => response.json())
       .then(data => setProperties(data));
   };
 
   const fetchPage = () => {
-    fetch(`http://localhost:8000/api/provinces/findByUrl/${urlProvince}`)
+    fetch(`http://174.138.95.49/api/provinces/findByUrl/${urlProvince}`)
       .then(response => response.json())
       .then(data => setPage(data[0]));
   };

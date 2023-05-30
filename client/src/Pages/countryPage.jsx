@@ -9,7 +9,7 @@ const CountryPage = () =>{
   const { country } = useParams();
   const [properties, setProperties] = useState([])
   const fetchProperties =()=>{
-    fetch(`http://localhost:8000/api/industrialProperties/find/${country}`)
+    fetch(`http://174.138.95.49/api/industrialProperties/find/${country}`)
     .then(response =>{
       return response.json()
     })

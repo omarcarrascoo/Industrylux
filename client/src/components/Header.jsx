@@ -10,7 +10,7 @@ const Header = () =>{
     const {urlProvince, urlCountry} = useParams()
     const [countries, serCountries] = useState([])
     const fetchCountries =()=>{
-    fetch('http://localhost:8000/api/countries/')
+    fetch('http://174.138.95.49/api/countries/')
     .then(response =>{
       return response.json()
     })
@@ -24,7 +24,7 @@ const Header = () =>{
 
   const [provinces, setProvinces] = useState([])
     const fetchProvinces =()=>{
-    fetch('http://localhost:8000/api/provinces/')
+    fetch('http://174.138.95.49/api/provinces/')
     .then(response =>{
       return response.json()
     })
@@ -37,7 +37,7 @@ const Header = () =>{
   },[])
   const [categories, setCategories] = useState([])
   const fetchCategories =()=>{
-    fetch(`http://localhost:8000/api/categories/${urlProvince}`)
+    fetch(`http://174.138.95.49/api/categories/${urlProvince}`)
     .then(response =>{
       return response.json()
     })
@@ -53,7 +53,7 @@ const Header = () =>{
         <header className="mainHeader">
             <div className="container">
                 <div className="mainHeaderLogo">
-                   <Link to="/"> <img src="http://localhost:8000/assets/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" /></Link>
+                   <Link to="/"> <img src="http://174.138.95.49/assets/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" /></Link>
                 </div>
                 <div className="searchBar">
                     <form className='searchBarContainer' action="POST">

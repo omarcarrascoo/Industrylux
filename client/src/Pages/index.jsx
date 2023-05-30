@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function Index() {
   const [countries, serCountries] = useState([])
   const fetchCountries =()=>{
-    fetch('http://localhost:8000/api/countries/')
+    fetch('http://174.138.95.49/api/countries/')
     .then(response =>{
       return response.json()
     })
@@ -26,7 +26,7 @@ function Index() {
       </header>
       <main className="index__main">
         <div className="index__main__logo">
-          <img src="http://localhost:8000/assets/images/logo-industrilux.jpg" alt="industrilux logo jpg" />
+          <img src="http://174.138.95.49/assets/images/logo-industrilux.jpg" alt="industrilux logo jpg" />
         </div>
         <div className="index__main__titles">
           <h1>INMOBILUX - MARKETING PARA BIENES RAÍCES ESPECIALES Y DE LUJO</h1>
