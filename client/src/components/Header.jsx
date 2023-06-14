@@ -12,7 +12,7 @@ const Header = () =>{
     console.log(lan)
     const [countries, serCountries] = useState([])
     const fetchCountries =()=>{
-    fetch('http://localhost:1337/api/countries/')
+    fetch('https://industrylux.com/api/countries/')
     .then(response =>{
       return response.json()
     })
@@ -29,7 +29,7 @@ const Header = () =>{
   console.log(countries)
   const [provinces, setProvinces] = useState([])
     const fetchProvinces =()=>{
-    fetch('http://localhost:1337/api/provinces/')
+    fetch('https://industrylux.com/api/provinces/')
     .then(response =>{
       return response.json()
     })
@@ -42,7 +42,7 @@ const Header = () =>{
   },[])
   const [categories, setCategories] = useState([])
   const fetchCategories =()=>{
-    fetch(`http://localhost:1337/api/categories/${urlProvince}`)
+    fetch(`https://industrylux.com/api/categories/${urlProvince}`)
     .then(response =>{
       return response.json()
     })
@@ -58,7 +58,7 @@ const Header = () =>{
         <header className="mainHeader">
             <div className="container">
                 <div className="mainHeaderLogo">
-                   <Link to="/"> <img src="http://localhost:1337/public/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" /></Link>
+                   <Link to="/"> <img src="https://industrylux.com/public/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" /></Link>
                 </div>
                 <div className="searchBar">
                     <form className='searchBarContainer' action="POST">

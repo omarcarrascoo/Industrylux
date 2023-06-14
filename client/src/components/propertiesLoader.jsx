@@ -8,7 +8,7 @@ function PropertiesLoader({properties}) {
               <Link className='linkProperties' key={property._id} to={`/es/${property.urlCountry}/${property.urlProvince}/${property.urlCity}/${property.category}/${property.urlProperty}`}>
               <div  className="propertyCard">
                   <div className="propertyImgCard">
-                    <img src={`http://localhost:1337/${property.imgRoute[0]}`} alt="Image Flag" />
+                    <img src={`https://industrylux.com/${property.imgRoute[0]}`} alt="Image Flag" />
                   </div>
                   <div className="countryCardTextsProperty">
                     <h3>{property.h1}</h3>

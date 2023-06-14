@@ -1,7 +1,7 @@
 import React from 'react'
 function BannerLoader({img}) {
     const imgs = img
-    const imgLink = `http://localhost:1337/${imgs}`
+    const imgLink = `https://industrylux.com/${imgs}`
     console.log(imgLink);
   return (
     <div className='bannerLoaderImg'>
