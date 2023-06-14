@@ -8,9 +8,11 @@ import { useParams } from 'react-router-dom';
 import CategoryFilter from './categoryFilter'
 const Header = () =>{
     const {urlProvince, urlCountry} = useParams()
+    const { lan } = useParams();
+    console.log(lan)
     const [countries, serCountries] = useState([])
     const fetchCountries =()=>{
-    fetch('http://174.138.95.49/api/countries/')
+    fetch('http://localhost:1337/api/countries/')
     .then(response =>{
       return response.json()
     })
@@ -21,10 +23,13 @@ const Header = () =>{
   useEffect(()=>{
     fetchCountries()
   },[])
+  const countriesFilter = countries.filter(element => element.lenguage === lan);
 
+  console.log(countriesFilter);
+  console.log(countries)
   const [provinces, setProvinces] = useState([])
     const fetchProvinces =()=>{
-    fetch('http://174.138.95.49/api/provinces/')
+    fetch('http://localhost:1337/api/provinces/')
     .then(response =>{
       return response.json()
     })
@@ -37,7 +42,7 @@ const Header = () =>{
   },[])
   const [categories, setCategories] = useState([])
   const fetchCategories =()=>{
-    fetch(`http://174.138.95.49/api/categories/${urlProvince}`)
+    fetch(`http://localhost:1337/api/categories/${urlProvince}`)
     .then(response =>{
       return response.json()
     })
@@ -53,7 +58,7 @@ const Header = () =>{
         <header className="mainHeader">
             <div className="container">
                 <div className="mainHeaderLogo">
-                   <Link to="/"> <img src="http://174.138.95.49/assets/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" /></Link>
+                   <Link to="/"> <img src="http://localhost:1337/public/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" /></Link>
                 </div>
                 <div className="searchBar">
                     <form className='searchBarContainer' action="POST">
@@ -68,14 +73,14 @@ const Header = () =>{
                                 <ul>
                                 {countries.map(country =>(
                                 <li key={country._id}>
-                                            <Link to={`es/bienes-raices-indusrieales/${country.urlCountry}`}><a> {country.countryName}</a></Link>
+                                            <Link to={`es/${country.urlCountry}`}> {country.countryName}</Link>
                                             <ul>  
                                             {provinces
                                                 .filter(province => province.country === country.urlCountry) // Filter provinces by country
                                                 .map(province => (
                                                 <li key={province._id}>
-                                                    <Link to={`es/bienes-raices-indusrieales/${country.urlCountry}/${province.urlProvince}`}>
-                                                    <a>{province.provinceName}</a>
+                                                    <Link to={`es/${country.urlCountry}/${province.urlProvince}`}>
+                                                    {province.provinceName}
                                                     </Link>
                                                 </li>
                                                 ))
@@ -95,8 +100,8 @@ const Header = () =>{
                                 }
                                 
                             </li>
-                            <li><Link to="/es/bienes-raices-indusrieales/contacto">Contacto</Link></li>
-                            <li><Link to="/en/Properities">English</Link></li></ul>
+                            <li><Link to="/es/contacto">Contacto</Link></li>
+                            <li><Link to={`/en`}>English</Link></li></ul>
                     </nav>
                 </div>
         </header>

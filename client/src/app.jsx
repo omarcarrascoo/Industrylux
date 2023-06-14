@@ -1,33 +1,40 @@
-import React from 'react'
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
-import Header from './components/Header'
-import Index from './Pages'
-import CategoryPage from './Pages/CategoryPage'
-import Contacto from './Pages/Contacto'
-import CountryPage from './Pages/countryPage'
-import PropertyPage from './Pages/propertyPage'
-import ProvincePage from './Pages/ProvincePage'
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import Header from './components/Header';
+import Index from './Pages';
+import CategoryPage from './Pages/CategoryPage';
+import Contacto from './Pages/Contacto';
+import CountryPage from './Pages/countryPage';
+import PropertyPage from './Pages/propertyPage';
+import ProvincePage from './Pages/ProvincePage';
+
 function App() {
-    const router = createBrowserRouter(
-        createRoutesFromElements(
-            <Route path="/" element={<Header/>}>
-              <Route index element={<Index/>}/>
-              <Route path='/es/bienes-raices-indusrieales/contacto' element={<Contacto/>}/>
-              <Route path="/es/bienes-raices-indusrieales/:country" element={<CountryPage/>}/>
-              <Route path="/es/bienes-raices-indusrieales/:urlCountry/:urlProvince" element={<ProvincePage/>}/>
-              <Route path="/es/bienes-raices-indusrieales/:urlCountry/:urlProvince/:category1" element={<CategoryPage/>}/>
-              <Route path='es/bienes-raices-indusrieales/:urlCountry/:urlProvince/:category1/:category2/:urlES' element={<PropertyPage/>}/>
-            </Route>
-            // <Route path="/contact" element={<Contact/>}/>
-        )
-    )
+
   return (
-    <>
-      <RouterProvider router={router}/>
-    </>
-  )
+    <Router>
+      <Helmet>
+        <title>funciona</title>
+      </Helmet>
+      <Header />
+      <Routes>
+      
+        {/* <Route path="/" element={<Index />} /> */}
+        <Route path="/" element={<Navigate to="/es"/> } />
+        <Route  path="/:lan" element={<Index/>}/>
+        <Route path="/:lan/contacto" element={<Contacto />} />
+        <Route path="/:lan/:country" element={<CountryPage />} />
+        <Route path="/:lan/:urlCountry/:urlProvince" element={<ProvincePage />} />
+        <Route path="/:lan/:urlCountry/:urlProvince/:category1" element={<CategoryPage />} />
+        <Route
+          path="/:lan/:urlCountry/:urlProvince/:category1/:category2/:urlProperty"
+          element={<PropertyPage />}
+        />
+      </Routes>
+    </Router>
+  );
 }
+
 export default App;
-
-
 

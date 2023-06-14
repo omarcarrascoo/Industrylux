@@ -1,6 +1,10 @@
 import React from 'react'
 import Leon from '../assets/imgs/logo_pleca.svg'
+import { Helmet } from 'react-helmet';
 function Contacto() {
+    <Helmet>
+            <title>Contacto</title>
+    </Helmet>
   return (
     <section className="contacto">
         <div className="topContact">

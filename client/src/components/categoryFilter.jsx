@@ -8,7 +8,7 @@ function categoryFilter({categories, urlProvince, urlCountry}) {
                                 <ul>
                                 {categories.map(category =>(
                                 <li key={category._id}>
-                                            <Link to={`es/bienes-raices-indusrieales/${urlCountry}/${urlProvince}/${category.urlCategory}`}><a> {category.categoryTitle}</a></Link>
+                                            <Link to={`es/${urlCountry}/${urlProvince}/${category.urlCategory}`}><a> {category.categoryTitle}</a></Link>
                                 </li>
                                  ))}
                                 </ul>

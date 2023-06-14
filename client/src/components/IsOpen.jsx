@@ -11,7 +11,7 @@ function IsOpen({data}) {
       .filter(data => data.country === country.urlCountry) // Filter provinces by country
          .map(province => (
          <li key={province._id}>
-         <Link to={`es/bienes-raices-indusrieales/${country.urlCountry}/${provinceurlProvince}`}>
+         <Link to={`es/${country.urlCountry}/${provinceurlProvince}`}>
          <a>{province.provinceName}</a>
          </Link>
          </li>

@@ -9,12 +9,12 @@ const CategoryPage = () => {
   const [page, setPage] = useState([]);
 
   const fetchPage = () => {
-    fetch(`http://174.138.95.49/api/categories/findPageProvinceCategory/${urlProvince}/${category1}`)
+    fetch(`http://localhost:1337/api/categories/findPageProvinceCategory/${urlProvince}/${category1}`)
       .then(response => response.json())
       .then(data => setPage(data));
   };
   const fetchProperties = () => {
-    fetch(`http://174.138.95.49/api/industrialProperties/findByProvince/${urlProvince}`)
+    fetch(`http://localhost:1337/api/industrialProperties/findByProvince/${urlProvince}`)
       .then(response => response.json())
       .then(data => setProperties(data));
   };

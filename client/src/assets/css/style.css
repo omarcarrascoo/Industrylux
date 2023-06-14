@@ -364,3 +364,17 @@ p{
 .linkProperties{
     text-decoration: none;
 }
+
+
+.btnShow{
+    display: block;
+    margin: 0 auto;
+    border: none;
+    text-decoration: underline;
+    transition: all .2s;
+
+}
+.btnShow:hover{
+    color: blue
+    
+}
