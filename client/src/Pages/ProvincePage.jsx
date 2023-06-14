@@ -11,13 +11,13 @@ const ProvincePage = () => {
   const [page, setPage] = useState([]);
 
   const fetchProperties = () => {
-    fetch(`https://industrylux.com/api/industrialProperties/findByProvince/${urlProvince}`)
+    fetch(`http://174.138.95.49:1337/api/industrialProperties/findByProvince/${urlProvince}`)
       .then(response => response.json())
       .then(data => setProperties(data));
   };
 
   const fetchPage = () => {
-    fetch(`https://industrylux.com/api/provinces/findByUrl/${urlProvince}`)
+    fetch(`http://174.138.95.49:1337/api/provinces/findByUrl/${urlProvince}`)
       .then(response => response.json())
       .then(data => setPage(data[0]));
   };

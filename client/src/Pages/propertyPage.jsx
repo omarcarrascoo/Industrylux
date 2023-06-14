@@ -10,7 +10,7 @@ function PropertyPage() {
 const { urlProperty } = useParams();
 const [properties, setProperties] = useState([])
 const fetchProperties =()=>{
-  fetch(`https://industrylux.com/api/industrialProperties/findByUrl/${urlProperty}`)
+  fetch(`http://174.138.95.49:1337/api/industrialProperties/findByUrl/${urlProperty}`)
   .then(response =>{
     return response.json()
   })
