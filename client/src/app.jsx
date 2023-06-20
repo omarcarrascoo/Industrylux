@@ -17,7 +17,7 @@ function App() {
       <Helmet>
         <title>funciona</title>
       </Helmet>
-      <Header />
+      {/* <Header /> */}
       <Routes>
       
         {/* <Route path="/" element={<Index />} /> */}

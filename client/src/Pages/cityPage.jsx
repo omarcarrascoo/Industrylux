@@ -1,5 +1,6 @@
     import { useState, useEffect } from 'react';
     import { useParams } from 'react-router-dom';
+import Header from '../components/Header';
     import PageDescriptionC from '../components/PageDescriptionC';
 import PropertiesLoader from '../components/propertiesLoader';
 
@@ -9,13 +10,13 @@ import PropertiesLoader from '../components/propertiesLoader';
   const [page, setPage] = useState([]);
 
   const fetchProperties = () => {
-    fetch(`http://174.138.95.49:1337/api/industrialProperties/findByProvince/${urlProvince}`)
+    fetch(`http://143.110.234.115/api/industrialProperties/findByProvince/${urlProvince}`)
       .then(response => response.json())
       .then(data => setProperties(data));
   };
 
   const fetchPage = () => {
-    fetch(`http://174.138.95.49:1337/api/provinces/findByUrl/${urlProvince}`)
+    fetch(`http://143.110.234.115/api/provinces/findByUrl/${urlProvince}`)
       .then(response => response.json())
       .then(data => setPage(data[0]));
   };
@@ -27,6 +28,7 @@ import PropertiesLoader from '../components/propertiesLoader';
 
   return (
     <>
+      <Header/>
       <PageDescriptionC data={page} />
       <PropertiesLoader properties={properties} />
     </>

@@ -106,7 +106,24 @@ p{
 }
 
 
-/*Header*/
+
+
+
+
+
+.justificado{
+    text-align: justify;
+}
+
+
+
+
+
+
+/* 
+
+
+*Header*/
 .mainHeader{
     width: 100%;
     height: 100px;
@@ -122,6 +139,13 @@ p{
     justify-content: space-between;
     align-items: center;
 
+}
+.containerHeader{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
 }
 .mainHeaderLogo{
     width: 20%;
@@ -187,12 +211,52 @@ p{
     display: none;
     cursor: pointer;
 }
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* PAGE DESCRIPTION */
-.pageDecription{
+.pageDescriptionContainer{
     width: 85%;
     margin: 0 auto;
     text-align: center;
 }
+.pageDecription h1{
+    text-align: center;
+}
+.pageDecription h2{
+    text-align: center;
+}
+.container-justify{
+    margin: 0 auto;
+    width: 90%;
+    text-align: justify;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* PROPERTY PAGE */
 .propertyPageTexts{
@@ -219,6 +283,14 @@ p{
     width: 660px;
     height: 415px;
 }
+
+
+
+
+
+
+
+
 
 
 /* CONCTACT */
@@ -378,3 +450,80 @@ p{
     color: blue
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.menuToggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-left: auto;
+  }
+  
+  .mainNav.open {
+    display: block;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .menuToggle {
+      display: block;
+    }
+  
+    .mainNav {
+      display: none;
+      margin-top: 10px;
+      width: 100%;
+    }
+  
+    .mainNav.open {
+      display: block;
+    }
+  
+    .mainNav ul {
+        /* position: relative; */
+        background-color: #000;
+        display: flex;
+        height: 10px;
+      flex-direction: column;
+      
+      
+    }
+  
+    .mainNav ul li {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+    .mainNav ul li  ul{
+        background-color: #000;
+        position: relative;
+        height: 10px;
+        
+        flex-direction: column;
+      }
+      .mainNav ul li ul li ul{
+        background-color: rgb(255, 0, 0);
+        position:relative;
+        flex-direction: column;
+        top: 0;
+        left: 10%;
+      }
+      
+  }
+
+
+
+
+  

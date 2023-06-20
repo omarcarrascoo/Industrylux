@@ -6,11 +6,13 @@ import PageDescription from '../components/pageDescription';
 import PropertiesLoader from '../components/propertiesLoader';  
 import Contacto from './Contacto';
 import { Helmet } from 'react-helmet';
+import Header from '../components/Header';
+import ContactC from '../components/ContactC';
 function PropertyPage() {
 const { urlProperty } = useParams();
 const [properties, setProperties] = useState([])
 const fetchProperties =()=>{
-  fetch(`http://174.138.95.49:1337/api/industrialProperties/findByUrl/${urlProperty}`)
+  fetch(`http://143.110.234.115/api/industrialProperties/findByUrl/${urlProperty}`)
   .then(response =>{
     return response.json()
   })
@@ -21,9 +23,8 @@ const fetchProperties =()=>{
 useEffect(()=>{
   fetchProperties()
 },[])
-const videoSrc = properties.videos
-console.log(videoSrc);
-console.log();
+const videoSrc = properties.videos;
+const imgFilter = properties.imgRoute
   return (
     <>
     <Helmet>
@@ -31,7 +32,12 @@ console.log();
             <meta name='description' content={properties.metaDescription} />
             <meta name='keywords' content={properties.keyWords} />
       </Helmet>
-    <BannerLoader img={properties.imgRoute}/>
+    <Header/>
+    {imgFilter? imgFilter.map(property =>(
+              <BannerLoader img ={property}/>
+            )) : <h4>Loading</h4>
+    }
+    {/* <BannerLoader img={properties.imgRoute}/> */}
     <section className="propertyPage">
       <div className="propertyPageTexts">
           <h1>{properties.h1}</h1>
@@ -44,7 +50,7 @@ console.log();
       <iframe width="560" height="315" src= {videoSrc} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
       </div>
       </div>
-      <Contacto/>
+      <ContactC/>
     </section>
     </>
   )

@@ -5,8 +5,10 @@ import { useParams } from 'react-router-dom';
 function Index() {
   const [HomeInfo, setHomeInfo] = useState([])
   const { lan } = useParams();
+  const optionlan = lan == "es" ? "/en" : "/es"
+  const optionlanText = lan == "es" ? "Inglish" : "Español"
   const fetchHomeInfo =()=>{
-    fetch('http://174.138.95.49:1337/api/homes/')
+    fetch('http://143.110.234.115/api/homes/')
     .then(response =>{
       return response.json()
     })
@@ -17,7 +19,7 @@ function Index() {
   }
   const [countries, serCountries] = useState([])
   const fetchCountries =()=>{
-    fetch('http://174.138.95.49:1337/api/countries/')
+    fetch('http://143.110.234.115/api/countries/')
     .then(response =>{
       return response.json()
     })
@@ -36,12 +38,12 @@ function Index() {
       <div className="index">
         <header className="indexHeader">
           <div className="container__indexHeader">
-              <a href="/en">English</a>
+              <a href={optionlan}>{optionlanText}</a>
           </div>
       </header>
       <main className="index__main">
         <div className="index__main__logo">
-          <img src="http://174.138.95.49:1337/public/images/logo-industrilux.jpg" alt="industrilux logo jpg" />
+          <img src="http://143.110.234.115/public/images/logo-industrilux.jpg" alt="industrilux logo jpg" />
         </div>
         <div className="index__main__titles">
           <h1>{pageInfo.h1}</h1>
@@ -56,7 +58,7 @@ function Index() {
                     <img src={country.imgRoute} alt="Image Flag" />
                   </div>
                   <div className="countryCardTexts">
-                    <h3>Ver Propiedades en {country.countryName}</h3>
+                    <h3> {lan == "es" ? "Propiedades en" :  "Properties in"} {country.countryName}</h3>
                   </div>
                 </div>
               </Link>
@@ -66,7 +68,7 @@ function Index() {
         </div>
         <div className="index__body__texts">
           <div className="index__body__texts__container">
-            <p>{pageInfo.p}</p>
+            <p className='justificado'>{pageInfo.p}</p>
           </div>
         </div>
       </main>

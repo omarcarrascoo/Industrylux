@@ -42,7 +42,7 @@ function pageDescriptionC({ data }) {
         <div className="pageDescriptionTexts">
           <h1>{data.h1}</h1>
           <h2>{data.h2}</h2>
-          <p>
+          <p className='container-justify'>
             {textToShow}
             {data.p.length > 100 && (
               <div className="btnShowContainer">

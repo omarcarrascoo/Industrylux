@@ -6,12 +6,14 @@ import PropertiesLoader from '../components/propertiesLoader';
 import PropertyBanner from '../components/PropertyBanner';
 import Contacto from './Contacto';
 import { Helmet } from 'react-helmet';
+import Header from '../components/Header';
+import ContactC from '../components/ContactC';
 
 const CountryPage = () =>{
   const { country, lan } = useParams();
   const [properties, setProperties] = useState([])
   const fetchProperties =()=>{
-    fetch(`http://174.138.95.49:1337/api/industrialProperties/find/${country}`)
+    fetch(`http://143.110.234.115/api/industrialProperties/find/${country}`)
     .then(response =>{
       return response.json()
     })
@@ -21,7 +23,7 @@ const CountryPage = () =>{
   }
   const [page, setPage] = useState([]);
   const fetchPage = () => {
-    fetch(`http://174.138.95.49:1337/api/countries/findByName/${country}`)
+    fetch(`http://143.110.234.115/api/countries/findByName/${country}`)
       .then((response) => {
         return response.json();
       })
@@ -42,14 +44,15 @@ const CountryPage = () =>{
             <meta name='description' content={filteredHomeInfo.metaDescription} />
             <meta name='keywords' content={filteredHomeInfo.keyWords} />
           </Helmet>
+          <Header/>
             <section className='bannerCountry'>
-            {properties.map(property =>(
-              <PropertyBanner img ={propertiesFilter.imgRoute}/>
+            {propertiesFilter.map(property =>(
+              <PropertyBanner key={property._id} img ={property.imgRoute[0]}/>
             ))}
             </section>
             <PageDescription data={filteredHomeInfo} maxLength={20}/>
             <PropertiesLoader properties={propertiesFilter}/>
-            <Contacto/>
+            <ContactC/>
         </>
     )
 }
@@ -85,7 +88,7 @@ export default CountryPage;
 //   const { country, lan } = useParams();
 //   const [properties, setProperties] = useState([]);
 //   const fetchProperties = () => {
-//     fetch(`http://174.138.95.49:1337/api/industrialProperties/find/${country}`)
+//     fetch(`http://143.110.234.115/api/industrialProperties/find/${country}`)
 //       .then(response => {
 //         return response.json();
 //       })
@@ -95,7 +98,7 @@ export default CountryPage;
 //   };
 //   const [page, setPage] = useState(null);
 //   const fetchPage = () => {
-//     fetch(`http://174.138.95.49:1337/api/countries/findByName/${country}`)
+//     fetch(`http://143.110.234.115/api/countries/findByName/${country}`)
 //       .then(response => {
 //         return response.json();
 //       })

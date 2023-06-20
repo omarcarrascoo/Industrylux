@@ -13,7 +13,7 @@ function PageDescription({ data }) {
   const maxCharacters = 500;
 
   const fetchPage = () => {
-    fetch(`http://174.138.95.49:1337/api/countries/findByName/${country}`)
+    fetch(`http://143.110.234.115/api/countries/findByName/${country}`)
       .then((response) => {
         return response.json();
       })
@@ -44,7 +44,7 @@ function PageDescription({ data }) {
         <div className="pageDescriptionTexts">
           <h1>{dataPage?.h1}</h1>
           <h2>{dataPage?.h2}</h2>
-          <p>
+          <p className='container-justify'>
             {text && (
               <>
                 {showMore ? text : `${text.slice(0, maxCharacters)}...`}

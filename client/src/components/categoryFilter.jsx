@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 function categoryFilter({categories, urlProvince, urlCountry}) {
+
     console.log(categories);
   return (
     <>
