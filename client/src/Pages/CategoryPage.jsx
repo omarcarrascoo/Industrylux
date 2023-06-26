@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Header from '../components/Header';
 import PageDescriptionC from '../components/PageDescriptionC';
 import PropertiesLoader from '../components/propertiesLoader';
 
@@ -9,12 +10,12 @@ const CategoryPage = () => {
   const [page, setPage] = useState([]);
 
   const fetchPage = () => {
-    fetch(`http://143.110.234.115/api/categories/findPageProvinceCategory/${urlProvince}/${category1}`)
+    fetch(`http://localhost:1337/api/categories/findPageProvinceCategory/${urlProvince}/${category1}`)
       .then(response => response.json())
       .then(data => setPage(data));
   };
   const fetchProperties = () => {
-    fetch(`http://143.110.234.115/api/industrialProperties/findByProvince/${urlProvince}`)
+    fetch(`http://localhost:1337/api/industrialProperties/findByProvince/${urlProvince}`)
       .then(response => response.json())
       .then(data => setProperties(data));
   };
@@ -25,6 +26,7 @@ const CategoryPage = () => {
   console.log(page);
   return (
     <>
+      <Header/>
       <PageDescriptionC data={page} />
       <PropertiesLoader properties={properties} />
     </>

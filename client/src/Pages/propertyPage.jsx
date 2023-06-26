@@ -12,7 +12,7 @@ function PropertyPage() {
 const { urlProperty } = useParams();
 const [properties, setProperties] = useState([])
 const fetchProperties =()=>{
-  fetch(`http://143.110.234.115/api/industrialProperties/findByUrl/${urlProperty}`)
+  fetch(`http://localhost:1337/api/industrialProperties/findByUrl/${urlProperty}`)
   .then(response =>{
     return response.json()
   })
@@ -33,10 +33,12 @@ const imgFilter = properties.imgRoute
             <meta name='keywords' content={properties.keyWords} />
       </Helmet>
     <Header/>
+    <section className="bannerCountry">
     {imgFilter? imgFilter.map(property =>(
               <BannerLoader img ={property}/>
             )) : <h4>Loading</h4>
     }
+    </section>
     {/* <BannerLoader img={properties.imgRoute}/> */}
     <section className="propertyPage">
       <div className="propertyPageTexts">

@@ -13,7 +13,7 @@ const CountryPage = () =>{
   const { country, lan } = useParams();
   const [properties, setProperties] = useState([])
   const fetchProperties =()=>{
-    fetch(`http://143.110.234.115/api/industrialProperties/find/${country}`)
+    fetch(`http://localhost:1337/api/industrialProperties/find/${country}`)
     .then(response =>{
       return response.json()
     })
@@ -23,7 +23,7 @@ const CountryPage = () =>{
   }
   const [page, setPage] = useState([]);
   const fetchPage = () => {
-    fetch(`http://143.110.234.115/api/countries/findByName/${country}`)
+    fetch(`http://localhost:1337/api/countries/findByName/${country}`)
       .then((response) => {
         return response.json();
       })
@@ -88,7 +88,7 @@ export default CountryPage;
 //   const { country, lan } = useParams();
 //   const [properties, setProperties] = useState([]);
 //   const fetchProperties = () => {
-//     fetch(`http://143.110.234.115/api/industrialProperties/find/${country}`)
+//     fetch(`http://localhost:1337/api/industrialProperties/find/${country}`)
 //       .then(response => {
 //         return response.json();
 //       })
@@ -98,7 +98,7 @@ export default CountryPage;
 //   };
 //   const [page, setPage] = useState(null);
 //   const fetchPage = () => {
-//     fetch(`http://143.110.234.115/api/countries/findByName/${country}`)
+//     fetch(`http://localhost:1337/api/countries/findByName/${country}`)
 //       .then(response => {
 //         return response.json();
 //       })

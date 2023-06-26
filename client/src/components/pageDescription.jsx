@@ -13,7 +13,7 @@ function PageDescription({ data }) {
   const maxCharacters = 500;
 
   const fetchPage = () => {
-    fetch(`http://143.110.234.115/api/countries/findByName/${country}`)
+    fetch(`http://localhost:1337/api/countries/findByName/${country}`)
       .then((response) => {
         return response.json();
       })

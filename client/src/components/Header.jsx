@@ -12,7 +12,7 @@
 //     console.log(lan)
 //     const [countries, serCountries] = useState([])
 //     const fetchCountries =()=>{
-//     fetch('http://143.110.234.115/api/countries/')
+//     fetch('http://localhost:1337/api/countries/')
 //     .then(response =>{
 //       return response.json()
 //     })
@@ -29,7 +29,7 @@
 //   console.log(countries)
 //   const [provinces, setProvinces] = useState([])
 //     const fetchProvinces =()=>{
-//     fetch('http://143.110.234.115/api/provinces/')
+//     fetch('http://localhost:1337/api/provinces/')
 //     .then(response =>{
 //       return response.json()
 //     })
@@ -42,7 +42,7 @@
 //   },[])
 //   const [categories, setCategories] = useState([])
 //   const fetchCategories =()=>{
-//     fetch(`http://143.110.234.115/api/categories/${urlProvince}`)
+//     fetch(`http://localhost:1337/api/categories/${urlProvince}`)
 //     .then(response =>{
 //       return response.json()
 //     })
@@ -58,7 +58,7 @@
 //         <header className="mainHeader">
 //             <div className="container">
 //                 <div className="mainHeaderLogo">
-//                    <Link to="/"> <img src="http://143.110.234.115/public/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" /></Link>
+//                    <Link to="/panel/"> <img src="http://localhost:1337/public/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" /></Link>
 //                 </div>
 //                 <div className="searchBar">
 //                     <form className='searchBarContainer' action="POST">
@@ -100,7 +100,7 @@
 //                                 }
                                 
 //                             </li>
-//                             <li><Link to="/es/contacto">Contacto</Link></li>
+//                             <li><Link to="/panel/es/contacto">Contacto</Link></li>
 //                             <li><Link to={`/en`}>English</Link></li></ul>
 //                     </nav>
 //                 </div>
@@ -124,7 +124,6 @@ import CategoryFilter from './categoryFilter';
 
 const Header = () => {
   const {urlProvince, urlCountry, lan} = useParams();
-  console.log(lan);
   // const { lan } = useParams();
   
   // console.log(urlProvince);
@@ -134,15 +133,15 @@ const Header = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch('http://143.110.234.115/api/countries/')
+    fetch('http://localhost:1337/api/countries/')
       .then(response => response.json())
       .then(data => setCountries(data));
 
-    fetch('http://143.110.234.115/api/provinces/')
+    fetch('http://localhost:1337/api/provinces/')
       .then(response => response.json())
       .then(data => setProvinces(data));
 
-    fetch(`http://143.110.234.115/api/categories/${urlProvince}`)
+    fetch(`http://localhost:1337/api/categories/${urlProvince}`)
       .then(response => response.json())
       .then(data => setCategories(data));
   }, [urlProvince]);
@@ -160,8 +159,8 @@ const Header = () => {
       <header className="mainHeader">
         <div className="containerHeader">
         {isMenuOpen ? false :<div className="mainHeaderLogo">
-            <Link to="/">
-            <img src="http://143.110.234.115/public/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" />
+            <Link to="/panel/">
+            <img src="http://localhost:1337/public/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" />
             </Link>
           </div> } 
           
@@ -193,13 +192,13 @@ const Header = () => {
                 </ul>
               </li>
               <li>
-                {provinces &&<url CategoryFilter categories={categories} urlProvince={urlProvince} urlCountry={urlCountry} />}
+                {urlProvince ? <CategoryFilter categories={categories} urlProvince={urlProvince} urlCountry={urlCountry} />:""}
               </li>
               <li>
                 <Link to={`/${lan}/contacto`}>{lan == "es" ? "Contacto" : "Contact"}</Link>
               </li>
               <li>
-                <Link to={optionlan}>{lan == "es" ? "Inglish" : "Español"}</Link>
+                <Link to={optionlan}>{lan == "es" ? "English" : "Español"}</Link>
               </li>
             </ul>
           </nav>

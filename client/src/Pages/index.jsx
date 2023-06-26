@@ -6,9 +6,9 @@ function Index() {
   const [HomeInfo, setHomeInfo] = useState([])
   const { lan } = useParams();
   const optionlan = lan == "es" ? "/en" : "/es"
-  const optionlanText = lan == "es" ? "Inglish" : "Español"
+  const optionlanText = lan == "es" ? "English" : "Español"
   const fetchHomeInfo =()=>{
-    fetch('http://143.110.234.115/api/homes/')
+    fetch('http://localhost:1337/api/homes/')
     .then(response =>{
       return response.json()
     })
@@ -19,7 +19,7 @@ function Index() {
   }
   const [countries, serCountries] = useState([])
   const fetchCountries =()=>{
-    fetch('http://143.110.234.115/api/countries/')
+    fetch('http://localhost:1337/api/countries/')
     .then(response =>{
       return response.json()
     })
@@ -43,7 +43,7 @@ function Index() {
       </header>
       <main className="index__main">
         <div className="index__main__logo">
-          <img src="http://143.110.234.115/public/images/logo-industrilux.jpg" alt="industrilux logo jpg" />
+          <img src="http://localhost:1337/public/images/logo-industrilux.jpg" alt="industrilux logo jpg" />
         </div>
         <div className="index__main__titles">
           <h1>{pageInfo.h1}</h1>
