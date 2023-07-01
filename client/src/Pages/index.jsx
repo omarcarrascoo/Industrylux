@@ -47,7 +47,7 @@ function Index() {
         </div>
         <div className="index__main__titles">
           <h1>{pageInfo.h1}</h1>
-          <h2>{pageInfo.h2}</h2>
+          <h2 className='title-page'>{pageInfo.h2}</h2>
         </div>
         <div className="index__coutry__selecetor">
           <div className="indexCountrySelectorContainer">

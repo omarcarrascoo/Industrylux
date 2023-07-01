@@ -14,6 +14,9 @@ p{
     font-weight: 300;
     line-height: 29px;
 }
+.title-page{
+    text-align: center;
+}
 /*Index*/
 .indexHeader{
     width: 100%;
@@ -43,7 +46,7 @@ p{
     color: #f2f2f2;
 }
 .index__main__logo{
-    width: 25%;
+    width: 30%;
     margin: 0 auto;
 }
 .index__main__logo img{
@@ -64,9 +67,12 @@ p{
 }
 .index__coutry__selecetor{
     margin: 50px;
+    max-width: 300px;
 }
 .indexCountrySelectorContainer{
     display: flex;
+    overflow: auto;
+    max-width: 100%;
 }
 
 .indexCountrySelectorContainer h3{
@@ -211,23 +217,6 @@ p{
     display: none;
     cursor: pointer;
 }
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* PAGE DESCRIPTION */
@@ -354,16 +343,14 @@ p{
     display: flex;
     flex-wrap: nowrap;
     overflow: auto;
-    height: 80vh;
+    align-items: center;
     
 }
 .propertyBannerContainer{
-    min-width: 100%;
     max-height: 100vh;
+    
 }
 .propertyBannerContainer img{
-    width: 100%;
-    min-height: 80vh;
     max-height: 80vh;
 }
 
@@ -382,21 +369,15 @@ p{
 /* BANER LOADER */
 .bannerLoaderImg{
     width: 100%;
-    height: 80vh;
+    max-height: 80vh;
 }
 .bannerLoaderImg img{
     min-width: 100%;
-    min-height: 80vh;
     max-height: 80vh;
 }
-
-
-
-
 .propertyCard{
     width: 350px;
-    margin-bottom: 50px;
-    
+    margin-bottom: 50px;    
 }
 .propertyImgCard {
     width: 100%;
@@ -477,11 +458,37 @@ p{
     display: block;
   }
   
+
   @media screen and (max-width: 768px) {
+
+    .propertyBannerContainer{
+        min-width: 100%;
+        justify-content: center;
+    }
+    .propertyBannerContainer img{
+        min-width: 100%;
+    }
+    
+    .propertyCard{
+        max-width: 80%;
+        margin: 0 auto;
+        margin-bottom: 50px;   
+    }
+    .propertiesLoaderContainer{
+
+        margin: 50px auto;
+        justify-content: center;
+    }
     .menuToggle {
       display: block;
     }
-  
+    .index__main__logo{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .mainHeaderLogo{
+        width: 50%;
+    }
     .mainNav {
       display: none;
       margin-top: 10px;
@@ -523,7 +530,9 @@ p{
       
   }
 
-
+  @media screen and (max-width: 350px) {
+    
+  }
 
 
   

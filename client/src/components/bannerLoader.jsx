@@ -4,7 +4,7 @@ function BannerLoader({img}) {
     const imgLink = `http://localhost:1337/${imgs}`
     console.log(imgLink);
   return (
-    <div className='bannerLoaderImg'>
+    <div className='propertyBannerContainer'>
       <img src={imgLink} alt="" />
     </div>
   )

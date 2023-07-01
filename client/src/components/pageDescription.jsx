@@ -42,8 +42,8 @@ function PageDescription({ data }) {
     <section className="pageDecription">
       <div className="pageDescriptionContainer">
         <div className="pageDescriptionTexts">
-          <h1>{dataPage?.h1}</h1>
-          <h2>{dataPage?.h2}</h2>
+          <h1 className='title-page'>{dataPage?.h1}</h1>
+          <h2 className='title-page'>{dataPage?.h2}</h2>
           <p className='container-justify'>
             {text && (
               <>

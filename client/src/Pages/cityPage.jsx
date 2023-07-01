@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import PropertiesLoader from '../components/propertiesLoader';
 
   const ProvincePage = () => {
-  const { urlProvince } = useParams();
+  const { urlProvince, lan } = useParams();
   const [properties, setProperties] = useState([]);
   const [page, setPage] = useState([]);
 
@@ -25,12 +25,12 @@ import PropertiesLoader from '../components/propertiesLoader';
     fetchProperties();
     fetchPage();
   }, [urlProvince]);
-
+  const propertiesFilter = properties.filter(element => element.lenguage === lan);
   return (
     <>
       <Header/>
       <PageDescriptionC data={page} />
-      <PropertiesLoader properties={properties} />
+      <PropertiesLoader properties={propertiesFilter} />
     </>
   );
 };

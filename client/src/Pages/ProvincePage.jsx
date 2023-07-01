@@ -8,37 +8,42 @@ import { Helmet } from 'react-helmet';
 import ContactC from '../components/ContactC';
 import Header from '../components/Header';
 const ProvincePage = () => {
-  const { urlProvince } = useParams();
+  const { urlProvince, lan } = useParams();
   const [properties, setProperties] = useState([]);
   const [page, setPage] = useState([]);
 
-  const fetchProperties = () => {
-    fetch(`http://localhost:1337/api/industrialProperties/findByProvince/${urlProvince}`)
+  const fetchProperties = async () => {
+    await fetch(`http://localhost:1337/api/industrialProperties/findByProvince/${urlProvince}`)
       .then(response => response.json())
       .then(data => setProperties(data));
   };
 
-  const fetchPage = () => {
-    fetch(`http://localhost:1337/api/provinces/findByUrl/${urlProvince}`)
+  const fetchPage = async () => {
+    await fetch(`http://localhost:1337/api/provinces/findByUrl/${urlProvince}`)
       .then(response => response.json())
-      .then(data => setPage(data[0]));
+      .then(data => setPage(data));
   };
 
   useEffect(() => {
     fetchProperties();
     fetchPage();
   }, [urlProvince]);
-
+  const propertiesFilter = properties.filter(element => element.lenguage === lan);
+  console.log(page);
+    const filteredPage= page.filter(element => element.lenguage === lan)
+    console.log(filteredPage);
+    const helper = filteredPage[0] || 0
+    console.log(helper);
   return (
     <>
       <Helmet>
-            <title>{page.titleTag}</title>
-            <meta name='description' content={page.metaDescription} />
-            <meta name='keywords' content={page.keyWords} />
+            <title>{helper.titleTag}</title>
+            <meta name='description' content={helper.metaDescription} />
+            <meta name='keywords' content={helper.keyWords} />
       </Helmet>
       <Header/>
-      <PageDescriptionC data={page} />
-      <PropertiesLoader properties={properties} />
+      <PageDescriptionC data={helper} />
+      <PropertiesLoader properties={propertiesFilter} />
       <ContactC/>
     </>
   );

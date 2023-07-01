@@ -1,11 +1,12 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 function PropertiesLoader({properties}) {
+  const {lan} = useParams ()
   return (
     <section className="propertiesLoader">
         <div className="propertiesLoaderContainer">
         {properties.map(property =>(
-              <Link className='linkProperties' key={property._id} to={`/es/${property.urlCountry}/${property.urlProvince}/${property.urlCity}/${property.category}/${property.urlProperty}`}>
+              <Link className='linkProperties' key={property._id} to={`/${lan}/${property.urlCountry}/${property.urlProvince}/${property.urlCity}/${property.category}/${property.urlProperty}`}>
               <div  className="propertyCard">
                   <div className="propertyImgCard">
                     <img src={`http://localhost:1337/${property.imgRoute[0]}`} alt="Image Flag" />

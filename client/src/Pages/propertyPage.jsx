@@ -34,7 +34,7 @@ const imgFilter = properties.imgRoute
       </Helmet>
     <Header/>
     <section className="bannerCountry">
-    {imgFilter? imgFilter.map(property =>(
+    {imgFilter? imgFilter.toReversed().map(property =>(
               <BannerLoader img ={property}/>
             )) : <h4>Loading</h4>
     }
@@ -43,7 +43,7 @@ const imgFilter = properties.imgRoute
     <section className="propertyPage">
       <div className="propertyPageTexts">
           <h1>{properties.h1}</h1>
-          <h2>{properties.h2}</h2>
+          <h2 className='title-page'>{properties.h2}</h2>
           <p>Clave: {properties.posicionListado}</p>
           {/* <p>Antiguedad: {properties.anoConstruccion}</p>
           <p>Precio: {properties.precioString}</p> */}

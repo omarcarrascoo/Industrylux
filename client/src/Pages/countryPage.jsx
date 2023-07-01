@@ -47,7 +47,9 @@ const CountryPage = () =>{
           <Header/>
             <section className='bannerCountry'>
             {propertiesFilter.map(property =>(
-              <PropertyBanner key={property._id} img ={property.imgRoute[0]}/>
+              <PropertyBanner key={property._id} img ={property.imgRoute}/>
+              // <PropertyBanner key={property._id} img={property.imgRoute[property.imgRoute.length] || 0} />
+
             ))}
             </section>
             <PageDescription data={filteredHomeInfo} maxLength={20}/>
@@ -73,71 +75,3 @@ export default CountryPage;
 
 
 
-
-
-// import { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
-// import BannerLoader from '../components/bannerLoader';
-// import PageDescription from '../components/pageDescription';
-// import PropertiesLoader from '../components/propertiesLoader';
-// import PropertyBanner from '../components/PropertyBanner';
-// import Contacto from './Contacto';
-// import { Helmet } from 'react-helmet';
-
-// const CountryPage = () => {
-//   const { country, lan } = useParams();
-//   const [properties, setProperties] = useState([]);
-//   const fetchProperties = () => {
-//     fetch(`http://localhost:1337/api/industrialProperties/find/${country}`)
-//       .then(response => {
-//         return response.json();
-//       })
-//       .then(data => {
-//         setProperties(data);
-//       });
-//   };
-//   const [page, setPage] = useState(null);
-//   const fetchPage = () => {
-//     fetch(`http://localhost:1337/api/countries/findByName/${country}`)
-//       .then(response => {
-//         return response.json();
-//       })
-//       .then(data => {
-//         setPage(data[0]);
-//       });
-//   };
-//   useEffect(() => {
-//     fetchPage();
-//     fetchProperties();
-//   }, []);
-
-//   if (page === null) {
-//     // Handle the case when page is null
-//     return <div>Loading...</div>;
-//   }
-
-//     // const filteredHomeInfo = page.filter(element => element.lenguage === lan);
-//     // console.log(filteredHomeInfo + "hola");
-//     // const filteredHomeInfo = page.filter(element => element.lenguage === lan);
-//     console.log(page);
-
-//   return (
-//     <>
-//       <Helmet>
-//         <title>{page.titleTag}</title>
-//         <meta name='description' content={page.metaDescription} />
-//         <meta name='keywords' content={page.keyWords} />
-//       </Helmet>
-//       <section className='bannerCountry'>
-//         {properties.map(property => (
-//           <PropertyBanner img={property.imgRoute} key={property.id} />
-//         ))}
-//       </section>
-//       <PageDescription data={country} maxLength={20} />
-//       <PropertiesLoader properties={properties} />
-//       <Contacto />
-//     </>
-//   );
-// };
-
-// export default CountryPage;

@@ -1,11 +1,13 @@
 import React from 'react'
 
-function PropertyBanner({img}) {
+function PropertyBanner({img}){
   // console.log(img);
-    const imgLink = `http://localhost:1337/${img}`
+  console.log(img);
+  let lastElement = img[img.length - 1]
+  console.log(lastElement);
   return (
     <div className="propertyBannerContainer">
-        <img src={imgLink} alt="" />
+        <img src={`http://localhost:1337/${lastElement}`} alt="" /> 
     </div>
   )
 }
