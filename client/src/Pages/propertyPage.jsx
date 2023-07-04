@@ -11,6 +11,8 @@ import ContactC from '../components/ContactC';
 function PropertyPage() {
 const { urlProperty } = useParams();
 const [properties, setProperties] = useState([])
+const [showMore, setShowMore] = useState(false);
+const maxCharacters = 500;
 const fetchProperties =()=>{
   fetch(`http://localhost:1337/api/industrialProperties/findByUrl/${urlProperty}`)
   .then(response =>{
@@ -23,8 +25,14 @@ const fetchProperties =()=>{
 useEffect(()=>{
   fetchProperties()
 },[])
+const toggleShowMore = () => {
+  setShowMore(!showMore);
+};
 const videoSrc = properties.videos;
+const no = null;
 const imgFilter = properties.imgRoute
+const text = properties?.p;
+
   return (
     <>
     <Helmet>
@@ -47,10 +55,28 @@ const imgFilter = properties.imgRoute
           <p>Clave: {properties.posicionListado}</p>
           {/* <p>Antiguedad: {properties.anoConstruccion}</p>
           <p>Precio: {properties.precioString}</p> */}
-          <p>{properties.p}</p>
-          <div className="propertyPageVideo">
-      <iframe width="560" height="315" src= {videoSrc} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-      </div>
+          <p>
+            {text && (
+                <>
+                  {showMore ? text : `${text.slice(0, maxCharacters)}...`}
+                  {text.length > maxCharacters && (
+                    <>
+                      {' '}
+                      {showMore ? (
+                        <div className="btnShowContainer">
+                          <button className='btnShow' onClick={toggleShowMore}>Mostrar menos</button>
+                        </div>
+                      ) : (
+                        <button className='btnShow' onClick={toggleShowMore}>Mostrar más</button>
+                      )}
+                    </>
+                  )}
+                </>
+              )}          
+          </p>
+          {videoSrc? <div className="propertyPageVideo">
+            <iframe width="560" height="315" src= {videoSrc} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+          </div> : no}
       </div>
       <ContactC/>
     </section>

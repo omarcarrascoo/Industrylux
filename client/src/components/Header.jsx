@@ -44,7 +44,7 @@ const Header = () => {
       <header className="mainHeader">
         <div className="containerHeader">
         {isMenuOpen ? false :<div className="mainHeaderLogo">
-            <Link to="/panel/">
+            <Link to="/">
             <img src="http://localhost:1337/public/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" />
             </Link>
           </div> } 
