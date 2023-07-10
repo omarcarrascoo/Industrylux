@@ -9,13 +9,15 @@ const CategoryPage = () => {
   const [properties, setProperties] = useState([]);
   const [page, setPage] = useState([]);
 
+  console.log(category1);
+  console.log(urlProvince);
   const fetchPage = () => {
-    fetch(`http://localhost:1337/api/categories/findPageProvinceCategory/${urlProvince}/${category1}`)
+    fetch(`https://industrylux.com/api/categories/findPageProvinceCategory/${urlProvince}/${category1}`)
       .then(response => response.json())
       .then(data => setPage(data));
   };
   const fetchProperties = () => {
-    fetch(`http://localhost:1337/api/industrialProperties/findByProvince/${urlProvince}`)
+    fetch(`https://industrylux.com/api/industrialProperties/findByProvince/${urlProvince}`)
       .then(response => response.json())
       .then(data => setProperties(data));
   };
@@ -24,11 +26,13 @@ const CategoryPage = () => {
     fetchPage();
   }, [urlProvince, category1]);
   console.log(page);
+  console.log(properties);
+  const propertycategory = properties.filter(element => element.urlCategory === category1)
   return (
     <>
       <Header/>
       <PageDescriptionC data={page} />
-      <PropertiesLoader properties={properties} />
+      <PropertiesLoader properties={propertycategory} />
     </>
   );
 };

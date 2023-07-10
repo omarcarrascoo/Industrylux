@@ -10,13 +10,13 @@ import PropertiesLoader from '../components/propertiesLoader';
   const [page, setPage] = useState([]);
 
   const fetchProperties = () => {
-    fetch(`http://localhost:1337/api/industrialProperties/findByProvince/${urlProvince}`)
+    fetch(`https://industrylux.com/api/industrialProperties/findByProvince/${urlProvince}`)
       .then(response => response.json())
       .then(data => setProperties(data));
   };
 
   const fetchPage = () => {
-    fetch(`http://localhost:1337/api/provinces/findByUrl/${urlProvince}`)
+    fetch(`https://industrylux.com/api/provinces/findByUrl/${urlProvince}`)
       .then(response => response.json())
       .then(data => setPage(data[0]));
   };

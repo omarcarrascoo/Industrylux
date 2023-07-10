@@ -6,9 +6,8 @@ function categoryFilter({categories, urlProvince, urlCountry}) {
   const {lan}= useParams()
     if (categories) {
       try {
-        console.log("Si esta pasando.")
         useEffect(() => {
-          fetch(`http://localhost:1337/api/categories/pages`)
+          fetch(`https://industrylux.com/api/categories/pages`)
             .then(response => response.json())
             .then(data => setCategories(data))
         }, [urlCountry]);

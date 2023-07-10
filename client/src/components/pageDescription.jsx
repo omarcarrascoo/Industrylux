@@ -13,7 +13,7 @@ function PageDescription({ data }) {
   const maxCharacters = 500;
 
   const fetchPage = () => {
-    fetch(`http://localhost:1337/api/countries/findByName/${country}`)
+    fetch(`https://industrylux.com/api/countries/findByName/${country}`)
       .then((response) => {
         return response.json();
       })

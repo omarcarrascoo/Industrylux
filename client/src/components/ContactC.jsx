@@ -16,15 +16,17 @@ const { lan } = useParams();
                 <h2 className='contacTitle'>Contacto</h2>
                 <p>El listado de bienes raíces no es exhaustivo. Por favor contacte con nosotros para recibir más información sobre el tipo de propiedades que puedan interesarle y le ayudaremos a encontrar los bienes raíces adecuados para usted dependiendo de sus requerimientos y necesidades:</p>
                 <h3>LLAME AHORA</h3>
-                <a href="https://wa.me/524425950798?text=hola">Contacto x WhatsApp</a>
-                <p>Contacto x WhatsApp</p>
+                <a className='CALL' href='tel:+524425950798'>Telefono: +52.442.595.0798</a>
+                <br />
+                <a className='WHA' href="https://wa.me/524425950798?text=hola">Contacto x WhatsApp</a>
                 <p>O PROPORCIONE SUS DATOS PARA CONCERTAR UNA CITA</p>
             </div> : <div className="textsContact">
                 <h2 className='contacTitle'>Contact</h2>
                 <p>The listing of real estate is not exhaustive. Please contact us to receive more information about the type of properties that may interest you and we will help you find the right real estate for you depending on your requirements and needs:</p>
                 <h3>CALL NOW</h3>
-                <p>Telephone: +52.442.595.0798</p>
-                <a href="https://wa.me/524425950798?text=hola">Contacto x WhatsApp</a>
+                <a className='CALL' href='tel:+524425950798'>Telephone: +52.442.595.0798</a>
+                <br />
+                <a className='WHA'href={`https://wa.me/524425950798?text=hola`}>Contacto x WhatsApp</a>
                 <p>OR PROVIDE YOUR DATA FOR AN APPOINTMENT</p>
             </div>}
             <form action="POST" className="contactForm">

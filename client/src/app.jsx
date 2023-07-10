@@ -9,6 +9,7 @@ import Contacto from './Pages/Contacto';
 import CountryPage from './Pages/countryPage';
 import PropertyPage from './Pages/propertyPage';
 import ProvincePage from './Pages/ProvincePage';
+import MailConfirmation from './Pages/MailConfirmation';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           path="/:lan/:urlCountry/:urlProvince/:category1/:category2/:urlProperty"
           element={<PropertyPage />}
         />
+        <Route  path="/:lan/mail" element={<MailConfirmation/>}/>
       </Routes>
     </Router>
   );
