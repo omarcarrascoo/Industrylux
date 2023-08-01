@@ -13,13 +13,13 @@ const ProvincePage = () => {
   const [page, setPage] = useState([]);
 
   const fetchProperties = async () => {
-    await fetch(`https://industrylux.com/api/industrialProperties/findByProvince/${urlProvince}`)
+    await fetch(`http://localhost:1337/api/industrialProperties/findByProvince/${urlProvince}`)
       .then(response => response.json())
       .then(data => setProperties(data));
   };
 
   const fetchPage = async () => {
-    await fetch(`https://industrylux.com/api/provinces/findByUrl/${urlProvince}`)
+    await fetch(`http://localhost:1337/api/provinces/findByUrl/${urlProvince}`)
       .then(response => response.json())
       .then(data => setPage(data));
   };
@@ -38,13 +38,13 @@ const ProvincePage = () => {
     <>
       <Helmet>
             <title>{helper.titleTag}</title>
-            <meta name='description' content={helper.metaDescription} />
+            <meta name='description' content={helper.metadescription} />
             <meta name='keywords' content={helper.keyWords} />
       </Helmet>
-      <Header/>
+      <Header alt={helper.lanLink}/>
       <PageDescriptionC data={helper} />
       <PropertiesLoader properties={propertiesFilter} />
-      <ContactC/>
+      <ContactC whaText = {helper.titleTag} />
     </>
   );
 };

@@ -7,7 +7,7 @@ import { Link, Outlet, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import CategoryFilter from './categoryFilter';
 
-const Header = () => {
+const Header = ({alt}) => {
   const {urlProvince, urlCountry, lan} = useParams();
   // const { lan } = useParams();
   
@@ -16,17 +16,22 @@ const Header = () => {
   const [countries, setCountries] = useState([]);
   const [provinces, setProvinces] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [developments, setDevelopments] = useState([]);
 
   useEffect(() => {
-    fetch('https://industrylux.com/api/countries/')
+    fetch('http://localhost:1337/api/countries/')
       .then(response => response.json())
       .then(data => setCountries(data));
 
-    fetch('https://industrylux.com/api/provinces/')
+    fetch('http://localhost:1337/api/provinces/')
       .then(response => response.json())
       .then(data => setProvinces(data));
 
-    fetch(`https://industrylux.com/api/categories/${urlProvince}`)
+    fetch('http://localhost:1337/api/cities/')
+      .then(response => response.json())
+      .then(data => setDevelopments(data));
+
+    fetch(`http://localhost:1337/api/categories/${urlProvince}`)
       .then(response => response.json())
       .then(data => setCategories(data));
   }, [urlProvince]);
@@ -37,15 +42,13 @@ const Header = () => {
   };
   const optionlan = lan == "es" ? "/en" : "/es"
 
-  // const filterCountry = countries.filter(element => element.lenguage === lan);
-  // console.log(filter);
   return (
     <>
       <header className="mainHeader">
         <div className="containerHeader">
         {isMenuOpen ? false :<div className="mainHeaderLogo">
             <Link to="/">
-            <img src="https://industrylux.com/public/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" />
+            <img src="http://localhost:1337/public/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" />
             </Link>
           </div> } 
           
@@ -69,6 +72,19 @@ const Header = () => {
                               <Link to={`/${lan}/${country.urlCountry}/${province.urlProvince}`}>
                                 {province.provinceName}
                               </Link>
+                              <ul>
+                                {developments
+                                  .filter(development => development.urlProvince === province.urlProvince &&  development.lenguage === lan).map(development => (
+                                <li key={development._id}>
+                                <Link to={`/${lan}/${country.urlCountry}/${province.urlProvince}/${development.urlCity}`}>
+                                {development.cityName}
+                              </Link>
+                              <ul>
+                                
+                              </ul>
+                            </li>
+                          ))}
+                              </ul>
                             </li>
                           ))}
                       </ul>
@@ -83,12 +99,13 @@ const Header = () => {
                 <Link to={`/${lan}/contacto`}>{lan == "es" ? "Contacto" : "Contact"}</Link>
               </li>
               <li>
-                <Link to={optionlan}>{lan == "es" ? "English" : "Español"}</Link>
+                <Link to={alt}>{lan == "es" ? "English" : "Español"}</Link>
               </li>
             </ul>
           </nav>
         </div>
       </header>
+      <div className="mainHeaderSpace"></div>
       <main className="outlet">
         <Outlet />
       </main>

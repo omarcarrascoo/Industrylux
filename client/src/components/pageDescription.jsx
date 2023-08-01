@@ -13,7 +13,7 @@ function PageDescription({ data }) {
   const maxCharacters = 500;
 
   const fetchPage = () => {
-    fetch(`https://industrylux.com/api/countries/findByName/${country}`)
+    fetch(`http://localhost:1337/api/countries/findByName/${country}`)
       .then((response) => {
         return response.json();
       })
@@ -36,7 +36,7 @@ function PageDescription({ data }) {
     <>
     <Helmet>
        <title>{dataPage.titleTag}</title>
-       <meta name="description" content={dataPage.metaDescription} />
+       <meta name="description" content={dataPage.metadescription} />
        <meta name="keywords" content={dataPage.keyWords} />
      </Helmet>
     <section className="pageDecription">

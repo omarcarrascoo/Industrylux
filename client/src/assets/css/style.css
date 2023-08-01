@@ -15,7 +15,9 @@ p{
     line-height: 29px;
 }
 .title-page{
+    font-size: 24px;
     text-align: center;
+    font-weight: 400;
 }
 .WHA{
     color: #25D366;
@@ -146,6 +148,11 @@ p{
     color: #f2f2f2;
     display: flex;
     align-items: center;
+    position: fixed;
+    top: 0;
+}
+.mainHeaderSpace{
+    height: 100px;
 }
 .container{
     display: flex;
@@ -338,6 +345,14 @@ p{
     border-radius: 5px;
     padding: 10px;
 }
+.confirmationMailContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90dvh;
+    flex-direction: column;
+}
 /* BANNER LOADER */
 
 .bannerLoaderImg{
@@ -470,6 +485,13 @@ p{
   
 
   @media screen and (max-width: 768px) {
+    .propertyPageTexts{
+        text-align: left;
+    }
+    .container-justify{
+        text-align: left;
+    }
+    
     .justificado{
         text-align: left;
     }

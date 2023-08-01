@@ -10,13 +10,15 @@ import CountryPage from './Pages/countryPage';
 import PropertyPage from './Pages/propertyPage';
 import ProvincePage from './Pages/ProvincePage';
 import MailConfirmation from './Pages/MailConfirmation';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
 
   return (
     <Router>
+      <ScrollToTop/>
       <Helmet>
-        <title>funciona</title>
+        <title>Industrylux</title>
       </Helmet>
       {/* <Header /> */}
       <Routes>

@@ -13,7 +13,7 @@ const CountryPage = () =>{
   const { country, lan } = useParams();
   const [properties, setProperties] = useState([])
   const fetchProperties =()=>{
-    fetch(`https://industrylux.com/api/industrialProperties/find/${country}`)
+    fetch(`http://localhost:1337/api/industrialProperties/find/${country}`)
     .then(response =>{
       return response.json()
     })
@@ -23,7 +23,7 @@ const CountryPage = () =>{
   }
   const [page, setPage] = useState([]);
   const fetchPage = () => {
-    fetch(`https://industrylux.com/api/countries/findByName/${country}`)
+    fetch(`http://localhost:1337/api/countries/findByName/${country}`)
       .then((response) => {
         return response.json();
       })
@@ -37,14 +37,19 @@ const CountryPage = () =>{
   }, []);
   const propertiesFilter = properties.filter(element => element.lenguage === lan);
   const filteredHomeInfo = page.filter(element => element.lenguage === lan);
+  // Assuming filteredHomeInfo is defined somewhere in your code or imported.
+
+// Check if filteredHomeInfo is defined and not empty before accessing its properties.
+const altLink = filteredHomeInfo && filteredHomeInfo[0] ? filteredHomeInfo[0].lanLink : 0;
+
     return(
         <>
           <Helmet>
             <title>{filteredHomeInfo.titleTag}</title>
-            <meta name='description' content={filteredHomeInfo.metaDescription} />
+            <meta name='description' content={filteredHomeInfo.metadescription} />
             <meta name='keywords' content={filteredHomeInfo.keyWords} />
           </Helmet>
-          <Header/>
+          <Header alt={altLink}/>
             <section className='bannerCountry'>
             {propertiesFilter.map(property =>(
               <PropertyBanner key={property._id} img ={property.imgRoute}/>
@@ -54,7 +59,7 @@ const CountryPage = () =>{
             </section>
             <PageDescription data={filteredHomeInfo} maxLength={20}/>
             <PropertiesLoader properties={propertiesFilter}/>
-            <ContactC/>
+            <ContactC whaText = {filteredHomeInfo.titleTag}/>
         </>
     )
 }

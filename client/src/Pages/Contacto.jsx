@@ -10,7 +10,7 @@ function Contacto() {
   return (
     <>
     <Header/>
-    <ContactC/>
+    <ContactC whaText = "Contact us!"/>
     </>
   )
 }

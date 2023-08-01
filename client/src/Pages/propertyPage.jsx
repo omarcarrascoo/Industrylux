@@ -14,7 +14,7 @@ const [properties, setProperties] = useState([])
 const [showMore, setShowMore] = useState(false);
 const maxCharacters = 500;
 const fetchProperties =()=>{
-  fetch(`https://industrylux.com/api/industrialProperties/findByUrl/${urlProperty}`)
+  fetch(`http://localhost:1337/api/industrialProperties/findByUrl/${urlProperty}`)
   .then(response =>{
     return response.json()
   })
@@ -32,15 +32,15 @@ const videoSrc = properties.videos;
 const no = null;
 const imgFilter = properties.imgRoute
 const text = properties?.p;
-
+const altLink = properties ? properties.lanLink : 0;
   return (
     <>
     <Helmet>
             <title>{properties.titleTag}</title>
-            <meta name='description' content={properties.metaDescription} />
+            <meta name='description' content={properties.metadescription} />
             <meta name='keywords' content={properties.keyWords} />
       </Helmet>
-    <Header/>
+    <Header alt={altLink}/>
     <section className="bannerCountry">
     {imgFilter? imgFilter.toReversed().map(property =>(
               <BannerLoader img ={property}/>
@@ -78,7 +78,7 @@ const text = properties?.p;
             <iframe width="560" height="315" src= {videoSrc} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
           </div> : no}
       </div>
-      <ContactC/>
+      <ContactC whaText = {properties.titleTag}/>
     </section>
     </>
   )
