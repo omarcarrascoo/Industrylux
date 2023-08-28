@@ -7,7 +7,7 @@ import PropertyBanner from '../components/PropertyBanner';
 const CategoryPage = () => {
   const { urlProvince, category1, lan } = useParams();
   const [properties, setProperties] = useState([]);
-  const [page, setPage] = useState([]);
+  const [page, setPage] = useState(null);
   const [categoryPage, setCategoryPage] = useState(null)
   const [cityPage, setCityPage] = useState([])
 
@@ -73,14 +73,17 @@ const CategoryPage = () => {
   }
 
 
-  const filteredPage= page.length >1 ? page.filter(element => element.lenguage === lan) : [page];
-
+  const filteredPage= page && page.length >1 ? page.filter(element => element.lenguage === lan) : [page];
+  const image = filteredPage[0];
   console.log(filteredPage);
   return (
     <>
       <Header/>
       <section className='bannerCountry'>
-        <PropertyBanner img={filteredPage[0].imgCover} />
+      {/* {filteredPage && filteredPage.length > 0 && (
+          <PropertyBanner img={image} />
+        )} */}
+
       </section>
       <PageDescriptionC data={filteredPage[0]} />
       <PropertiesLoader properties={propertycategory} />
