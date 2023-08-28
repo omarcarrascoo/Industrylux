@@ -19,19 +19,19 @@ const Header = ({alt}) => {
   const [developments, setDevelopments] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:1337/api/countries/')
+    fetch('https://industrylux.com/api/countries/')
       .then(response => response.json())
       .then(data => setCountries(data));
 
-    fetch('http://localhost:1337/api/provinces/')
+    fetch('https://industrylux.com/api/provinces/')
       .then(response => response.json())
       .then(data => setProvinces(data));
 
-    fetch('http://localhost:1337/api/cities/')
+    fetch('https://industrylux.com/api/cities/')
       .then(response => response.json())
       .then(data => setDevelopments(data));
 
-    fetch(`http://localhost:1337/api/categories/${urlProvince}`)
+    fetch(`https://industrylux.com/api/categories/${urlProvince}`)
       .then(response => response.json())
       .then(data => setCategories(data));
   }, [urlProvince]);
@@ -48,7 +48,7 @@ const Header = ({alt}) => {
         <div className="containerHeader">
         {isMenuOpen ? false :<div className="mainHeaderLogo">
             <Link to="/">
-            <img src="http://localhost:1337/public/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" />
+            <img src="https://industrylux.com/public/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" />
             </Link>
           </div> } 
           

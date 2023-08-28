@@ -14,7 +14,7 @@ const [properties, setProperties] = useState([])
 const [showMore, setShowMore] = useState(false);
 const maxCharacters = 500;
 const fetchProperties =()=>{
-  fetch(`http://localhost:1337/api/industrialProperties/findByUrl/${urlProperty}`)
+  fetch(`https://industrylux.com/api/industrialProperties/findByUrl/${urlProperty}`)
   .then(response =>{
     return response.json()
   })

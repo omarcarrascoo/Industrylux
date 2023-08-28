@@ -9,7 +9,7 @@ function Index() {
   const optionlan = lan == "es" ? "/en" : "/es"
   const optionlanText = lan == "es" ? "English" : "Español"
   const fetchHomeInfo =()=>{
-    fetch('http://localhost:1337/api/homes/')
+    fetch('https://industrylux.com/api/homes/')
     .then(response =>{
       return response.json()
     })
@@ -20,7 +20,7 @@ function Index() {
   }
   const [countries, serCountries] = useState([])
   const fetchCountries =()=>{
-    fetch('http://localhost:1337/api/countries/')
+    fetch('https://industrylux.com/api/countries/')
     .then(response =>{
       return response.json()
     })
@@ -49,7 +49,7 @@ function Index() {
       </header>
       <main className="index__main">
         <div className="index__main__logo">
-          <img src="http://localhost:1337/public/images/logo-industrilux.jpg" alt="industrilux logo jpg" />
+          <img src="https://industrylux.com/public/images/logo-industrilux.jpg" alt="industrilux logo jpg" />
         </div>
         <div className="index__main__titles">
           <h1>{pageInfo.h1}</h1>
