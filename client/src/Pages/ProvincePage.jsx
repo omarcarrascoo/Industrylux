@@ -7,6 +7,7 @@ import PropertiesLoader from '../components/propertiesLoader';
 import { Helmet } from 'react-helmet';
 import ContactC from '../components/ContactC';
 import Header from '../components/Header';
+import PropertyBanner from '../components/PropertyBanner';
 const ProvincePage = () => {
   const { urlProvince, lan } = useParams();
   const [properties, setProperties] = useState([]);
@@ -42,6 +43,9 @@ const ProvincePage = () => {
             <meta name='keywords' content={helper.keyWords} />
       </Helmet>
       <Header alt={helper.lanLink}/>
+      <section className='bannerCountry'>
+        <PropertyBanner img={helper.imgCover} />
+      </section>
       <PageDescriptionC data={helper} />
       <PropertiesLoader properties={propertiesFilter} />
       <ContactC whaText = {helper.titleTag} />

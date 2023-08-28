@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import '../assets/css/style.css'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 function Index() {
   const [HomeInfo, setHomeInfo] = useState([])
   const { lan } = useParams();
@@ -35,6 +36,11 @@ function Index() {
   const pageInfo = filteredHomeInfo[0] || 0
   return (
     <>
+    <Helmet>
+        <title>{pageInfo.titleTag}</title>
+        <meta name='description' content={pageInfo.metadescription} />
+        <meta name='keywords' content={pageInfo.keyWords} />
+    </Helmet>
       <div className="index">
         <header className="indexHeader">
           <div className="container__indexHeader">

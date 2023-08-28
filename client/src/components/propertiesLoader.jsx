@@ -2,7 +2,7 @@ import React from 'react'
 import {Link, useParams} from 'react-router-dom'
 function PropertiesLoader({properties}) {
   const {lan} = useParams ()
-  return (
+  return ( 
     <section className="propertiesLoader">
         <div className="propertiesLoaderContainer">
         {properties.map(property =>(

@@ -372,11 +372,13 @@ p{
     
 }
 .propertyBannerContainer{
+    width: 100%;
     max-height: 100vh;
     
 }
 .propertyBannerContainer img{
     max-height: 80vh;
+    width: 100%;
 }
 
 /* PAGE DESCRIPTION */

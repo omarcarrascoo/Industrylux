@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import PageDescriptionC from '../components/PageDescriptionC';
 import PropertiesLoader from '../components/propertiesLoader';
-
+import PropertyBanner from '../components/PropertyBanner';
 const CategoryPage = () => {
   const { urlProvince, category1, lan } = useParams();
   const [properties, setProperties] = useState([]);
@@ -48,7 +48,7 @@ const CategoryPage = () => {
   // }
 
   useEffect(() => {
-    fetchProperties();
+    fetchProperties();Aug
     fetchByCategory();
     fetchByCity();
 
@@ -56,7 +56,7 @@ const CategoryPage = () => {
   useEffect(() => {
     const pageSetting = () => {
       if (categoryPage == null) {
-        setPage(cityPage);
+        setPage(...cityPage);
       } else {
         console.log("Le alterno si funciona");
         setPage(categoryPage);
@@ -72,30 +72,16 @@ const CategoryPage = () => {
     propertycategory = properties.filter(element => element.urlCity === category1)
   }
 
+
   const filteredPage= page.length >1 ? page.filter(element => element.lenguage === lan) : [page];
 
-  
-  console.log("Pagina filtrada por lenguaje:");
   console.log(filteredPage);
-  console.log("CATEGORIA");
-  console.log(category1);
-  console.log("Procincia url");
-  console.log(urlProvince);
-  console.log("Properties");
-  console.log(properties);
-  console.log("Category Page");
-  console.log(categoryPage);
-  console.log("City Page")
-  console.log(cityPage);
-  console.log("Page");
-  console.log(page);
-  console.log(page.length);
-  console.log("Filter properties");
-  console.log(propertycategory);
-
   return (
     <>
       <Header/>
+      <section className='bannerCountry'>
+        <PropertyBanner img={filteredPage[0].imgCover} />
+      </section>
       <PageDescriptionC data={filteredPage[0]} />
       <PropertiesLoader properties={propertycategory} />
     </>

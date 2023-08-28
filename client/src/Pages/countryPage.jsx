@@ -37,11 +37,10 @@ const CountryPage = () =>{
   }, []);
   const propertiesFilter = properties.filter(element => element.lenguage === lan);
   const filteredHomeInfo = page.filter(element => element.lenguage === lan);
-  // Assuming filteredHomeInfo is defined somewhere in your code or imported.
+  const altLink = filteredHomeInfo && filteredHomeInfo[0] ? filteredHomeInfo[0].lanLink : 0;
 
-// Check if filteredHomeInfo is defined and not empty before accessing its properties.
-const altLink = filteredHomeInfo && filteredHomeInfo[0] ? filteredHomeInfo[0].lanLink : 0;
 
+    console.log(filteredHomeInfo);
     return(
         <>
           <Helmet>
@@ -51,11 +50,7 @@ const altLink = filteredHomeInfo && filteredHomeInfo[0] ? filteredHomeInfo[0].la
           </Helmet>
           <Header alt={altLink}/>
             <section className='bannerCountry'>
-            {propertiesFilter.map(property =>(
-              <PropertyBanner key={property._id} img ={property.imgRoute}/>
-              // <PropertyBanner key={property._id} img={property.imgRoute[property.imgRoute.length] || 0} />
-
-            ))}
+              <PropertyBanner img={filteredHomeInfo} />
             </section>
             <PageDescription data={filteredHomeInfo} maxLength={20}/>
             <PropertiesLoader properties={propertiesFilter}/>

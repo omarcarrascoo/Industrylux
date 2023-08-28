@@ -1,10 +1,12 @@
 import React from 'react'
 
 function PropertyBanner({img}){
-  let lastElement = img[img.length - 1]
+  const data = img && img[0] && img[0].imgCover ? img[0].imgCover : img;
+  console.log(data);
+
   return (
     <div className="propertyBannerContainer">
-        <img src={`http://localhost:1337/${lastElement}`} alt="" /> 
+        <img src={data} alt="" /> 
     </div>
   )
 }
