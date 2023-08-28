@@ -48,7 +48,7 @@ const CategoryPage = () => {
   // }
 
   useEffect(() => {
-    fetchProperties();Aug
+    fetchProperties();
     fetchByCategory();
     fetchByCity();
 
