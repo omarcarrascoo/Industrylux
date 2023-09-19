@@ -44,7 +44,7 @@ function PageDescription({ data }) {
         <div className="pageDescriptionTexts">
           <h1 className='title-page'>{dataPage?.h1}</h1>
           <h2 className='title-page'>{dataPage?.h2}</h2>
-          <p className='container-justify'>
+          {/* <p className='container-justify'>
             {text && (
               <>
                 {showMore ? text : `${text.slice(0, maxCharacters)}...`}
@@ -62,7 +62,70 @@ function PageDescription({ data }) {
                 )}
               </>
             )}
-          </p>
+          </p> */}
+
+    <div className="container-justify">
+      {text && (
+        <>
+          <div
+            className="toggleable-content"
+            dangerouslySetInnerHTML={{
+              __html: showMore ? text : `${text.slice(0, maxCharacters)}...`,
+            }}
+          />
+          {text.length > maxCharacters && (
+            <div className="btnShowContainer">
+              <button className="btnShow" onClick={toggleShowMore}>
+                {showMore ? 'Mostrar menos' : 'Mostrar más'}
+              </button>
+            </div>
+          )}
+        </>
+      )}
+    </div>
+
+
+
+
+
+         {/* <p className='container-justify'>
+  {text && (
+    <>
+      {showMore ? (
+        text.split('\n').map((paragraph, index) => (
+          <React.Fragment key={index}>
+            {paragraph}
+            <br />
+          </React.Fragment>
+        ))
+      ) : (
+        <>
+          {text.slice(0, maxCharacters).split('\n').map((paragraph, index) => (
+            <React.Fragment key={index}>
+              {paragraph}
+              <br />
+            </React.Fragment>
+          ))}
+          {text.length > maxCharacters && (
+            <span>
+              {' '}
+              {showMore ? (
+                <button className='btnShow' onClick={toggleShowMore}>
+                  Mostrar menos
+                </button>
+              ) : (
+                <button className='btnShow' onClick={toggleShowMore}>
+                  Mostrar más
+                </button>
+              )}
+            </span>
+          )}
+        </>
+      )}
+    </>
+  )}
+</p> */}
+
         </div>
       </div>
     </section>
