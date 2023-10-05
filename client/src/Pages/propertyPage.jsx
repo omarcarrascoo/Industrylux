@@ -55,7 +55,7 @@ const altLink = properties ? properties.lanLink : 0;
           <p>Clave: {properties.posicionListado}</p>
           {/* <p>Antiguedad: {properties.anoConstruccion}</p>
           <p>Precio: {properties.precioString}</p> */}
-          <p>
+          {/* <p>
             {text && (
                 <>
                   {showMore ? text : `${text.slice(0, maxCharacters)}...`}
@@ -73,7 +73,32 @@ const altLink = properties ? properties.lanLink : 0;
                   )}
                 </>
               )}          
-          </p>
+          </p> */}
+          <div>
+            {/* Replace <p> with <div> */}
+            {text && (
+              <>
+                {showMore ? (
+                  <div dangerouslySetInnerHTML={{ __html: text }} />
+                ) : (
+                  <div dangerouslySetInnerHTML={{ __html: `${text.slice(0, maxCharacters)}...` }} />
+                )}
+                {text.length > maxCharacters && (
+                  <>
+                    {' '}
+                    {showMore ? (
+                      <div className="btnShowContainer">
+                        <button className='btnShow' onClick={toggleShowMore}>Mostrar menos</button>
+                      </div>
+                    ) : (
+                      <button className='btnShow' onClick={toggleShowMore}>Mostrar más</button>
+                    )}
+                  </>
+                )}
+              </>
+            )}
+          </div>
+
           {videoSrc? <div className="propertyPageVideo">
             <iframe width="560" height="315" src= {videoSrc} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
           </div> : no}

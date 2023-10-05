@@ -26,12 +26,12 @@ function App() {
         {/* <Route path="/" element={<Index />} /> */}
         <Route path="/" element={<Navigate to="/es"/> } />
         <Route  path="/:lan" element={<Index/>}/>
-        <Route path="/:lan/contacto" element={<Contacto />} />
-        <Route path="/:lan/:country" element={<CountryPage />} />
-        <Route path="/:lan/:urlCountry/:urlProvince" element={<ProvincePage />} />
-        <Route path="/:lan/:urlCountry/:urlProvince/:category1" element={<CategoryPage />} />
+        <Route path="/:lan/:seof/contacto" element={<Contacto />} />
+        <Route path="/:lan/:seof/:country" element={<CountryPage />} />
+        <Route path="/:lan/:seof/:urlCountry/:urlProvince" element={<ProvincePage />} />
+        <Route path="/:lan/:seof/:urlCountry/:urlProvince/:category1" element={<CategoryPage />} />
         <Route
-          path="/:lan/:urlCountry/:urlProvince/:category1/:category2/:urlProperty"
+          path="/:lan/:seof/:urlCountry/:urlProvince/:category1/:category2/:urlProperty"
           element={<PropertyPage />}
         />
         <Route  path="/:lan/mail" element={<MailConfirmation/>}/>

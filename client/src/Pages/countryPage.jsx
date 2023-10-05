@@ -33,14 +33,13 @@ const CountryPage = () =>{
   };
   useEffect(() => {
     fetchPage();
-    fetchProperties()
-  }, []);
+    fetchProperties();
+  }, [country]);
+
   const propertiesFilter = properties.filter(element => element.lenguage === lan);
   const filteredHomeInfo = page.filter(element => element.lenguage === lan);
   const altLink = filteredHomeInfo && filteredHomeInfo[0] ? filteredHomeInfo[0].lanLink : 0;
-
-
-    console.log(filteredHomeInfo);
+  
     return(
         <>
           <Helmet>

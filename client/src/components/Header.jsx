@@ -34,13 +34,14 @@ const Header = ({alt}) => {
     fetch(`https://industrylux.com/api/categories/${urlProvince}`)
       .then(response => response.json())
       .then(data => setCategories(data));
-  }, [urlProvince]);
+  }, [urlProvince, urlCountry, lan]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   const optionlan = lan == "es" ? "/en" : "/es"
+  const seof = lan == "es"? "bienes-raices-industriales" : "industrial-real-estate"
 
   return (
     <>
@@ -63,20 +64,20 @@ const Header = ({alt}) => {
                   {countries.filter(country => country.lenguage === lan)
                   .map(country => (
                     <li key={country._id}>
-                      <Link to={`/${lan}/${country.urlCountry}`}>{country.countryName}</Link>
+                      <Link to={`/${lan}/${seof}/${country.urlCountry}`}>{country.countryName}</Link>
                       <ul>
                         {provinces
                           .filter(province => province.country === country.urlCountry &&  province.lenguage === lan)
                           .map(province => (
                             <li key={province._id}>
-                              <Link to={`/${lan}/${country.urlCountry}/${province.urlProvince}`}>
+                              <Link to={`/${lan}/${seof}/${country.urlCountry}/${province.urlProvince}`}>
                                 {province.provinceName}
                               </Link>
                               <ul>
                                 {developments
                                   .filter(development => development.urlProvince === province.urlProvince &&  development.lenguage === lan).map(development => (
                                 <li key={development._id}>
-                                <Link to={`/${lan}/${country.urlCountry}/${province.urlProvince}/${development.urlCity}`}>
+                                <Link to={`/${lan}/${seof}/${country.urlCountry}/${province.urlProvince}/${development.urlCity}`}>
                                 {development.cityName}
                               </Link>
                               <ul>
@@ -96,7 +97,7 @@ const Header = ({alt}) => {
                 {urlProvince ? <CategoryFilter categories={categories} urlProvince={urlProvince} urlCountry={urlCountry} />:""}
               </li>
               <li>
-                <Link to={`/${lan}/contacto`}>{lan == "es" ? "Contacto" : "Contact"}</Link>
+                <Link to={`/${lan}/${seof}/contacto`}>{lan == "es" ? "Contacto" : "Contact"}</Link>
               </li>
               <li>
                 <Link to={alt}>{lan == "es" ? "English" : "Español"}</Link>

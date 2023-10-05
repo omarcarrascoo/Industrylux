@@ -253,6 +253,9 @@ p{
     width: 90%;
     text-align: justify;
 }
+.container-justify p{
+    white-space: 0;
+}
 
 
 
@@ -378,7 +381,7 @@ p{
 }
 .propertyBannerContainer img{
     max-height: 80vh;
-    width: 100%;
+    width: 100vw;
 }
 
 /* PAGE DESCRIPTION */

@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet';
 function Index() {
   const [HomeInfo, setHomeInfo] = useState([])
   const { lan } = useParams();
+  const seof = lan == "es"? "bienes-raices-industriales" : "industrial-real-estate"
   const optionlan = lan == "es" ? "/en" : "/es"
   const optionlanText = lan == "es" ? "English" : "Español"
   const fetchHomeInfo =()=>{
@@ -28,12 +29,20 @@ function Index() {
       serCountries(data)
     })
   }
+  const [showMore, setShowMore] = useState(false);
+
+  const toggleShowMore = () => {
+    setShowMore(!showMore);
+  };
   useEffect(()=>{
     fetchCountries()
     fetchHomeInfo()
   },[])
   const filteredHomeInfo = HomeInfo.filter(element => element.lenguage === lan);
   const pageInfo = filteredHomeInfo[0] || 0
+  const maxCharacters = 500;
+  // const textToShow = showMore ? data.p : `${data.p.slice(0, 300)}...`;
+  const textToShow = pageInfo?.p
   return (
     <>
     <Helmet>
@@ -58,7 +67,7 @@ function Index() {
         <div className="index__coutry__selecetor">
           <div className="indexCountrySelectorContainer">
             {countries.filter(country => country.lenguage === lan).map(country => (
-              <Link key={country._id} to={`/${lan}/${country.urlCountry}`}>
+              <Link key={country._id} to={`/${lan}/${seof}/${country.urlCountry}`}>
                 <div className="countryCard">
                   <div className="countryCardFlag">
                     <img src={country.imgRoute} alt="Image Flag" />
@@ -74,7 +83,24 @@ function Index() {
         </div>
         <div className="index__body__texts">
           <div className="index__body__texts__container">
-            <p className='justificado'>{pageInfo.p}</p>
+            {/* <p className='justificado'>{pageInfo.p}</p> */}
+            {textToShow && (
+        <>
+          <div
+            className="toggleable-content container-justify"
+            dangerouslySetInnerHTML={{
+              __html: showMore ? textToShow : `${textToShow.slice(0, maxCharacters)}...`,
+            }}
+          />
+          {textToShow.length > maxCharacters && (
+            <div className="btnShowContainer">
+              <button className="btnShow" onClick={toggleShowMore}>
+                {showMore ? 'Mostrar menos' : 'Mostrar más'}
+              </button>
+            </div>
+          )}
+        </>
+      )}
           </div>
         </div>
       </main>
