@@ -9,7 +9,7 @@ function ContactC({whaText}) {
     const { lan } = useParams();
     const mail = async (data) => {
         try {
-          const response = await axios.post(`http://localhost:1337/api/mail/send`, data, {
+          const response = await axios.post(`https://industrylux.com/api/mail/send`, data, {
             headers: {
               'Content-Type': 'application/json',
             },

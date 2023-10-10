@@ -16,7 +16,7 @@ const CategoryPage = () => {
   
   const fetchByCategory = () => {
     try {
-      fetch(`http://localhost:1337/api/categories/findPageProvinceCategory/${urlProvince}/${category1}`)
+      fetch(`https://industrylux.com/api/categories/findPageProvinceCategory/${urlProvince}/${category1}`)
       .then(response => response.json())
       .then(data => setCategoryPage(data));
     } catch (error) {
@@ -26,7 +26,7 @@ const CategoryPage = () => {
 
   const fetchByCity = () =>{
     try {
-      fetch(`http://localhost:1337/api/cities/findByName/${category1}`)
+      fetch(`https://industrylux.com/api/cities/findByName/${category1}`)
        .then(response => response.json())
        .then(data => setCityPage(data));
     } catch (error) {
@@ -35,7 +35,7 @@ const CategoryPage = () => {
   }
 
   const fetchProperties = () => {
-    fetch(`http://localhost:1337/api/industrialProperties/findByProvince/${urlProvince}`)
+    fetch(`https://industrylux.com/api/industrialProperties/findByProvince/${urlProvince}`)
       .then(response => response.json())
       .then(data => setProperties(data));
   };

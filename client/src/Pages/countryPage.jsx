@@ -13,7 +13,7 @@ const CountryPage = () =>{
   const { country, lan } = useParams();
   const [properties, setProperties] = useState([])
   const fetchProperties =()=>{
-    fetch(`http://localhost:1337/api/industrialProperties/find/${country}`)
+    fetch(`https://industrylux.com/api/industrialProperties/find/${country}`)
     .then(response =>{
       return response.json()
     })
@@ -23,7 +23,7 @@ const CountryPage = () =>{
   }
   const [page, setPage] = useState([]);
   const fetchPage = () => {
-    fetch(`http://localhost:1337/api/countries/findByName/${country}`)
+    fetch(`https://industrylux.com/api/countries/findByName/${country}`)
       .then((response) => {
         return response.json();
       })
