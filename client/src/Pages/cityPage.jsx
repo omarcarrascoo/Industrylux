@@ -11,13 +11,13 @@ import PropertyBanner from '../components/PropertyBanner';
   const [page, setPage] = useState([]);
 
   const fetchProperties = () => {
-    fetch(`https://industrylux.com/api/industrialProperties/findByProvince/${urlProvince}`)
+    fetch(`http://localhost:1337/api/industrialProperties/findByProvince/${urlProvince}`)
       .then(response => response.json())
       .then(data => setProperties(data));
   };
 
   const fetchPage = () => {
-    fetch(`https://industrylux.com/api/provinces/findByUrl/${urlProvince}`)
+    fetch(`http://localhost:1337/api/provinces/findByUrl/${urlProvince}`)
       .then(response => response.json())
       .then(data => setPage(data[0]));
   };
@@ -33,7 +33,7 @@ import PropertyBanner from '../components/PropertyBanner';
   console.log(data);
   return (
     <>
-      <Header/>
+      <Header alt={data.lanLink}/>
       <section className='bannerCountry'>
         <PropertyBanner img={data.imgCover} />
       </section>

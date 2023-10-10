@@ -38,6 +38,7 @@ p{
     width: 90%;
     margin: 0 auto;
     text-align: right;
+    z-index: 1000;
 }
 .container__indexHeader a{
     color: #f2f2f2;

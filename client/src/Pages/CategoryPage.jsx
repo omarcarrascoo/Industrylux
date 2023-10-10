@@ -4,6 +4,8 @@ import Header from '../components/Header';
 import PageDescriptionC from '../components/PageDescriptionC';
 import PropertiesLoader from '../components/propertiesLoader';
 import PropertyBanner from '../components/PropertyBanner';
+import { Helmet } from 'react-helmet';
+import ContactC from '../components/ContactC';
 const CategoryPage = () => {
   const { urlProvince, category1, lan } = useParams();
   const [properties, setProperties] = useState([]);
@@ -14,7 +16,7 @@ const CategoryPage = () => {
   
   const fetchByCategory = () => {
     try {
-      fetch(`https://industrylux.com/api/categories/findPageProvinceCategory/${urlProvince}/${category1}`)
+      fetch(`http://localhost:1337/api/categories/findPageProvinceCategory/${urlProvince}/${category1}`)
       .then(response => response.json())
       .then(data => setCategoryPage(data));
     } catch (error) {
@@ -24,7 +26,7 @@ const CategoryPage = () => {
 
   const fetchByCity = () =>{
     try {
-      fetch(`https://industrylux.com/api/cities/findByName/${category1}`)
+      fetch(`http://localhost:1337/api/cities/findByName/${category1}`)
        .then(response => response.json())
        .then(data => setCityPage(data));
     } catch (error) {
@@ -33,7 +35,7 @@ const CategoryPage = () => {
   }
 
   const fetchProperties = () => {
-    fetch(`https://industrylux.com/api/industrialProperties/findByProvince/${urlProvince}`)
+    fetch(`http://localhost:1337/api/industrialProperties/findByProvince/${urlProvince}`)
       .then(response => response.json())
       .then(data => setProperties(data));
   };
@@ -76,9 +78,18 @@ const CategoryPage = () => {
   const filteredPage= page && page.length >1 ? page.filter(element => element.lenguage === lan) : [page];
   const image = filteredPage[0];
   console.log(filteredPage);
+  const checkclicks = () =>{
+    console.log(filteredPage[0]?.altLink);
+  }
+  const altLink = filteredPage && filteredPage[0] ? filteredPage[0].lanLink : 0;
   return (
     <>
-      <Header/>
+      <Helmet >
+            <title>{filteredPage[0]?.titleTag}</title>
+            <meta name='description' content={filteredPage[0]?.metadescription} />
+            <meta name='keywords' content={filteredPage[0]?.keyWords} />
+      </Helmet >
+      <Header onclick={checkclicks}  alt={altLink}/>
       <section className='bannerCountry'>
       {/* {filteredPage && filteredPage.length > 0 && (
           <PropertyBanner img={image} />
@@ -87,6 +98,7 @@ const CategoryPage = () => {
       </section>
       <PageDescriptionC data={filteredPage[0]} />
       <PropertiesLoader properties={propertycategory} />
+      <ContactC whaText = {propertycategory[0]?.h1}/>
     </>
   );
 };

@@ -8,9 +8,10 @@ function Index() {
   const { lan } = useParams();
   const seof = lan == "es"? "bienes-raices-industriales" : "industrial-real-estate"
   const optionlan = lan == "es" ? "/en" : "/es"
+  const seofOp= lan == "es"? "industrial-real-estate": "bienes-raices-industriales" 
   const optionlanText = lan == "es" ? "English" : "Español"
   const fetchHomeInfo =()=>{
-    fetch('https://industrylux.com/api/homes/')
+    fetch('http://localhost:1337/api/homes/')
     .then(response =>{
       return response.json()
     })
@@ -21,7 +22,7 @@ function Index() {
   }
   const [countries, serCountries] = useState([])
   const fetchCountries =()=>{
-    fetch('https://industrylux.com/api/countries/')
+    fetch('http://localhost:1337/api/countries/')
     .then(response =>{
       return response.json()
     })
@@ -37,12 +38,16 @@ function Index() {
   useEffect(()=>{
     fetchCountries()
     fetchHomeInfo()
-  },[])
+  },[lan])
   const filteredHomeInfo = HomeInfo.filter(element => element.lenguage === lan);
   const pageInfo = filteredHomeInfo[0] || 0
   const maxCharacters = 500;
   // const textToShow = showMore ? data.p : `${data.p.slice(0, 300)}...`;
   const textToShow = pageInfo?.p
+  const advertclick = () =>{
+    console.log(lan);
+    console.log(seof);
+  }
   return (
     <>
     <Helmet>
@@ -53,12 +58,12 @@ function Index() {
       <div className="index">
         <header className="indexHeader">
           <div className="container__indexHeader">
-              <a href={optionlan}>{optionlanText}</a>
+              <Link to={`${optionlan}/${seofOp}`} onClick={advertclick}>{optionlanText}</Link>
           </div>
       </header>
       <main className="index__main">
         <div className="index__main__logo">
-          <img src="https://industrylux.com/public/images/logo-industrilux.jpg" alt="industrilux logo jpg" />
+          <img src="http://localhost:1337/public/images/logo-industrilux.jpg" alt="industrilux logo jpg" />
         </div>
         <div className="index__main__titles">
           <h1>{pageInfo.h1}</h1>

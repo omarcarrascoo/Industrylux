@@ -9,6 +9,7 @@ import CategoryFilter from './categoryFilter';
 
 const Header = ({alt}) => {
   const {urlProvince, urlCountry, lan} = useParams();
+  
   // const { lan } = useParams();
   
   // console.log(urlProvince);
@@ -19,19 +20,19 @@ const Header = ({alt}) => {
   const [developments, setDevelopments] = useState([]);
 
   useEffect(() => {
-    fetch('https://industrylux.com/api/countries/')
+    fetch('http://localhost:1337/api/countries/')
       .then(response => response.json())
       .then(data => setCountries(data));
 
-    fetch('https://industrylux.com/api/provinces/')
+    fetch('http://localhost:1337/api/provinces/')
       .then(response => response.json())
       .then(data => setProvinces(data));
 
-    fetch('https://industrylux.com/api/cities/')
+    fetch('http://localhost:1337/api/cities/')
       .then(response => response.json())
       .then(data => setDevelopments(data));
 
-    fetch(`https://industrylux.com/api/categories/${urlProvince}`)
+    fetch(`http://localhost:1337/api/categories/${urlProvince}`)
       .then(response => response.json())
       .then(data => setCategories(data));
   }, [urlProvince, urlCountry, lan]);
@@ -49,7 +50,7 @@ const Header = ({alt}) => {
         <div className="containerHeader">
         {isMenuOpen ? false :<div className="mainHeaderLogo">
             <Link to="/">
-            <img src="https://industrylux.com/public/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" />
+            <img src="http://localhost:1337/public/images/logoIndustryluxLong.jpg" alt="Logo Industrylux" />
             </Link>
           </div> } 
           

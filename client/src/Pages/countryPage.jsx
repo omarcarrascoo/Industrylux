@@ -13,7 +13,7 @@ const CountryPage = () =>{
   const { country, lan } = useParams();
   const [properties, setProperties] = useState([])
   const fetchProperties =()=>{
-    fetch(`https://industrylux.com/api/industrialProperties/find/${country}`)
+    fetch(`http://localhost:1337/api/industrialProperties/find/${country}`)
     .then(response =>{
       return response.json()
     })
@@ -23,7 +23,7 @@ const CountryPage = () =>{
   }
   const [page, setPage] = useState([]);
   const fetchPage = () => {
-    fetch(`https://industrylux.com/api/countries/findByName/${country}`)
+    fetch(`http://localhost:1337/api/countries/findByName/${country}`)
       .then((response) => {
         return response.json();
       })
@@ -39,7 +39,7 @@ const CountryPage = () =>{
   const propertiesFilter = properties.filter(element => element.lenguage === lan);
   const filteredHomeInfo = page.filter(element => element.lenguage === lan);
   const altLink = filteredHomeInfo && filteredHomeInfo[0] ? filteredHomeInfo[0].lanLink : 0;
-  
+    console.log(filteredHomeInfo);
     return(
         <>
           <Helmet>
@@ -53,7 +53,7 @@ const CountryPage = () =>{
             </section>
             <PageDescription data={filteredHomeInfo} maxLength={20}/>
             <PropertiesLoader properties={propertiesFilter}/>
-            <ContactC whaText = {filteredHomeInfo.titleTag}/>
+            <ContactC whaText = {filteredHomeInfo[0]?.h1}/>
         </>
     )
 }

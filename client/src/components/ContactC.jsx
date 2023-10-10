@@ -9,7 +9,7 @@ function ContactC({whaText}) {
     const { lan } = useParams();
     const mail = async (data) => {
         try {
-          const response = await axios.post(`https://industrylux.com/api/mail/send`, data, {
+          const response = await axios.post(`http://localhost:1337/api/mail/send`, data, {
             headers: {
               'Content-Type': 'application/json',
             },
@@ -53,7 +53,7 @@ function ContactC({whaText}) {
                 <h3>CALL NOW</h3>
                 <a className='CALL' href='tel:+524425950798'>Telephone: +52.442.595.0798</a>
                 <br />
-                <a className='WHA'href={`https://wa.me/524425950798?text=${whaText}`}>Contacto x WhatsApp</a>
+                <a className='WHA'href={`https://wa.me/524425950798?text=${whaText}`}>Contact WhatsApp</a>
                 <p>OR PROVIDE YOUR DATA FOR AN APPOINTMENT</p>
             </div>}
             <form action="POST" className="contactForm" onSubmit={handleSubmit}>

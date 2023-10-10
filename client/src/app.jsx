@@ -24,8 +24,8 @@ function App() {
       <Routes>
       
         {/* <Route path="/" element={<Index />} /> */}
-        <Route path="/" element={<Navigate to="/es"/> } />
-        <Route  path="/:lan" element={<Index/>}/>
+        <Route path="/" element={<Navigate to="/es/bienes-raices-industriales"/> } />
+        <Route  path="/:lan/:seof" element={<Index/>}/>
         <Route path="/:lan/:seof/contacto" element={<Contacto />} />
         <Route path="/:lan/:seof/:country" element={<CountryPage />} />
         <Route path="/:lan/:seof/:urlCountry/:urlProvince" element={<ProvincePage />} />
