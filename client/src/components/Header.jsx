@@ -81,9 +81,9 @@ const Header = ({alt}) => {
                                 <Link to={`/${lan}/${seof}/${country.urlCountry}/${province.urlProvince}/${development.urlCity}`}>
                                 {development.cityName}
                               </Link>
-                              <ul>
+                              {/* <ul>
                                 
-                              </ul>
+                              </ul> */}
                             </li>
                           ))}
                               </ul>

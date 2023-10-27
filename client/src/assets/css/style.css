@@ -134,14 +134,7 @@ p{
 }
 
 
-
-
-
-
-/* 
-
-
-*Header*/
+/* *Header*/
 .mainHeader{
     width: 100%;
     height: 100px;
@@ -214,22 +207,20 @@ p{
 }
 .mainNav ul li ul{
     position: absolute;
-    right: 0;
-    min-width: 150px;
+    left: 0;
+    min-width: 350px;
     background-color: #313231;
     display: none;
 }
 .mainNav ul li ul li ul{
-    position: absolute;
-    top: 0;
-    right: 150px;
-    z-index: 10;
+    position: relative;
+    margin-left: 20px;
 }
 .mainNav ul li ul li{
     width: 100%;
 }
 .mainNav ul li:hover > ul{
-    display: initial;
+    display:block
 }
 #toggle, .mainNav label{
     display: none;
