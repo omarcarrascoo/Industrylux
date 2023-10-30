@@ -14,13 +14,13 @@ const ProvincePage = () => {
   const [page, setPage] = useState([]);
 
   const fetchProperties = async () => {
-    await fetch(`http://localhost:1337/api/industrialProperties/findByProvince/${urlProvince}`)
+    await fetch(`https://industrylux.com/api/industrialProperties/findByProvince/${urlProvince}`)
       .then(response => response.json())
       .then(data => setProperties(data));
   };
 
   const fetchPage = async () => {
-    await fetch(`http://localhost:1337/api/provinces/findByUrl/${urlProvince}`)
+    await fetch(`https://industrylux.com/api/provinces/findByUrl/${urlProvince}`)
       .then(response => response.json())
       .then(data => setPage(data));
   };
