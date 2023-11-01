@@ -5,7 +5,8 @@ function categoryFilter() {
   const [cat, setCategories] = useState([]);
   const {urlProvince, urlCountry, lan} = useParams();
   const [completeUrl, setCompleteUrl] = useState(false)
-  const seof = lan == "es"? "bienes-raices-industriales" : "industrial-real-estate"
+  const seof = lan == "es"? 
+  "bienes-raices-industriales" : "industrial-real-estate"
       try {
         useEffect(() => {
           fetch(`https://industrylux.com/api/categories/pages`)
@@ -24,9 +25,11 @@ function categoryFilter() {
           console.log(provinceExist);
           provinceExist === null || provinceExist == undefined ? setCompleteUrl(false) : setCompleteUrl(true)
           }
-        }, [urlProvince])
+
+          setCategoryState()
+        }, [urlProvince, urlCountry, lan])
       
-        
+        const categoriesLan = cat.filter(element => element.lenguage === lan);
   return (
     <>
       {/* <a>Categories </a>
@@ -43,8 +46,8 @@ function categoryFilter() {
           {completeUrl === false? 
           <>
             <a>Categories </a>
-                <ul>
-                  {cat.map(category =>(
+                <ul className='categoryMenu'>
+                  {categoriesLan.map(category =>(
                                   <li key={category._id}>
                                               <Link to={`/${lan}/${seof}/${urlCountry}/${urlProvince}/${category.urlCategory}`}><a> {category.categoryTitle}</a></Link>
                                   </li>
@@ -54,8 +57,8 @@ function categoryFilter() {
           : 
           <>
           <a>Categories </a>
-              <ul>
-                {cat.map(category =>(
+              <ul className='categoryMenu'>
+                {categoriesLan.map(category =>(
                                 <li key={category._id}>
                                             <Link to={`/${lan}/${seof}/${urlCountry}/${category.urlCategory}`}><a> {category.categoryTitle}</a></Link>
                                 </li>

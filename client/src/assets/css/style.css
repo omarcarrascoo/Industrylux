@@ -227,7 +227,11 @@ p{
     cursor: pointer;
 }
 
-
+.categoryMenu li a{
+    padding: 5px 20px !important;
+    margin: 0 !important;
+    font-size: 18px !important;
+}
 /* PAGE DESCRIPTION */
 .pageDescriptionContainer{
     width: 85%;
