@@ -6,14 +6,14 @@ import { Helmet } from 'react-helmet';
 
 
 function PageDescription({ data }) {
-  const { country, lan } = useParams();
+  const { urlCountry, lan } = useParams();
   const [page, setPage] = useState([]);
   const [showFullText, setShowFullText] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const maxCharacters = 500;
 
   const fetchPage = () => {
-    fetch(`https://industrylux.com/api/countries/findByName/${country}`)
+    fetch(`https://industrylux.com/api/countries/findByName/${urlCountry}`)
       .then((response) => {
         return response.json();
       })

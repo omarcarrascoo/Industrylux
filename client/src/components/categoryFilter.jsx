@@ -1,27 +1,23 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-function categoryFilter({categories, urlProvince, urlCountry}) {
+function categoryFilter() {
   const [cat, setCategories] = useState([]);
-  const {lan}= useParams()
+  const {urlProvince, urlCountry, lan} = useParams();
   const seof = lan == "es"? "bienes-raices-industriales" : "industrial-real-estate"
-    if (categories) {
       try {
         useEffect(() => {
           fetch(`https://industrylux.com/api/categories/pages`)
             .then(response => response.json())
             .then(data => setCategories(data))
-        }, [urlCountry]);
+        }, [urlCountry, urlProvince, lan]);
       } catch (error) {
         console.log(error);
-        categories = 0
       }
-      categories = cat
-    }
-
+      console.log(cat);
   return (
     <>
-      <a>Categories </a>
+      {/* <a>Categories </a>
                                 <ul>
                                 {categories
                                 .filter(category => category.urlProvince === urlProvince &&  category.lenguage === lan)
@@ -30,7 +26,31 @@ function categoryFilter({categories, urlProvince, urlCountry}) {
                                             <Link to={`/${lan}/${seof}/${urlCountry}/${urlProvince}/${category.urlCategory}`}><a> {category.categoryTitle}</a></Link>
                                 </li>
                                  ))}
-                                </ul>
+                                </ul> */}
+
+          {urlProvince?  
+          <>
+            <a>Categories </a>
+                <ul>
+                  {cat.map(category =>(
+                                  <li key={category._id}>
+                                              <Link to={`/${lan}/${seof}/${urlCountry}/${urlProvince}/${category.urlCategory}`}><a> {category.categoryTitle}</a></Link>
+                                  </li>
+                                  ))}
+                </ul>
+          </>
+          : 
+          <>
+          <a>Categories </a>
+              <ul>
+                {cat.map(category =>(
+                                <li key={category._id}>
+                                            <Link to={`/${lan}/${seof}/${urlCountry}/${category.urlCategory}`}><a> {category.categoryTitle}</a></Link>
+                                </li>
+                                ))}
+              </ul>
+        </> 
+        }
     </>
   )
 }

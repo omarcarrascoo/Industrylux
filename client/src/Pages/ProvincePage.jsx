@@ -14,7 +14,7 @@ const ProvincePage = () => {
   const [page, setPage] = useState([]);
 
   const fetchProperties = async () => {
-    await fetch(`https://industrylux.com/api/industrialProperties/findByProvince/${urlProvince}`)
+    await fetch(`https://industrylux.com/api/industrialProperties/findByProvinceOrCategory/${urlProvince}`)
       .then(response => response.json())
       .then(data => setProperties(data));
   };
@@ -29,12 +29,13 @@ const ProvincePage = () => {
     fetchProperties();
     fetchPage();
   }, [urlProvince]);
-  const propertiesFilter = properties.filter(element => element.lenguage === lan);
-  console.log(page);
-    const filteredPage= page.filter(element => element.lenguage === lan)
-    console.log(filteredPage);
+
+    const propertiesFilter = properties.filter(element => element.lenguage === lan);
+
+    const filteredPage= page? page.filter(element => element.lenguage === lan): page
+
     const helper = filteredPage[0] || 0
-    console.log(helper);
+  
   return (
     <>
       <Helmet>

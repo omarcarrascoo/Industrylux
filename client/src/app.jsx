@@ -27,7 +27,7 @@ function App() {
         <Route path="/" element={<Navigate to="/es/bienes-raices-industriales"/> } />
         <Route  path="/:lan/:seof" element={<Index/>}/>
         <Route path="/:lan/:seof/contacto" element={<Contacto />} />
-        <Route path="/:lan/:seof/:country" element={<CountryPage />} />
+        <Route path="/:lan/:seof/:urlCountry" element={<CountryPage />} />
         <Route path="/:lan/:seof/:urlCountry/:urlProvince" element={<ProvincePage />} />
         <Route path="/:lan/:seof/:urlCountry/:urlProvince/:category1" element={<CategoryPage />} />
         <Route

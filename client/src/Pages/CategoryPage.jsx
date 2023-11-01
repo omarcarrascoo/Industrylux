@@ -13,10 +13,10 @@ const CategoryPage = () => {
   const [categoryPage, setCategoryPage] = useState(null)
   const [cityPage, setCityPage] = useState([])
 
-  
   const fetchByCategory = () => {
+    const categoryName = category1? category1 : urlProvince
     try {
-      fetch(`https://industrylux.com/api/categories/findPageProvinceCategory/${urlProvince}/${category1}`)
+      fetch(`https://industrylux.com/api/categories/findPageByNameCategory/${categoryName}`)
       .then(response => response.json())
       .then(data => setCategoryPage(data));
     } catch (error) {
@@ -76,12 +76,13 @@ const CategoryPage = () => {
 
 
   const filteredPage= page && page.length >1 ? page.filter(element => element.lenguage === lan) : [page];
-  const image = filteredPage[0];
-  console.log(filteredPage);
+
+
   const checkclicks = () =>{
     console.log(filteredPage[0]?.altLink);
   }
   const altLink = filteredPage && filteredPage[0] ? filteredPage[0].lanLink : 0;
+  console.log(filteredPage);
   return (
     <>
       <Helmet >

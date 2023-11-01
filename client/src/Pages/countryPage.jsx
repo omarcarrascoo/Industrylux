@@ -10,10 +10,10 @@ import Header from '../components/Header';
 import ContactC from '../components/ContactC';
 
 const CountryPage = () =>{
-  const { country, lan } = useParams();
+  const { urlCountry, lan } = useParams();
   const [properties, setProperties] = useState([])
   const fetchProperties =()=>{
-    fetch(`https://industrylux.com/api/industrialProperties/find/${country}`)
+    fetch(`https://industrylux.com/api/industrialProperties/find/${urlCountry}`)
     .then(response =>{
       return response.json()
     })
@@ -23,7 +23,7 @@ const CountryPage = () =>{
   }
   const [page, setPage] = useState([]);
   const fetchPage = () => {
-    fetch(`https://industrylux.com/api/countries/findByName/${country}`)
+    fetch(`https://industrylux.com/api/countries/findByName/${urlCountry}`)
       .then((response) => {
         return response.json();
       })
@@ -34,7 +34,7 @@ const CountryPage = () =>{
   useEffect(() => {
     fetchPage();
     fetchProperties();
-  }, [country]);
+  }, [urlCountry]);
 
   const propertiesFilter = properties.filter(element => element.lenguage === lan);
   const filteredHomeInfo = page.filter(element => element.lenguage === lan);

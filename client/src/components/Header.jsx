@@ -95,7 +95,7 @@ const Header = ({alt}) => {
                 </ul>
               </li>
               <li>
-                {urlProvince ? <CategoryFilter categories={categories} urlProvince={urlProvince} urlCountry={urlCountry} />:""}
+                <CategoryFilter urlProvince={urlProvince} urlCountry={urlCountry} />
               </li>
               <li>
                 <Link to={`/${lan}/${seof}/contacto`}>{lan == "es" ? "Contacto" : "Contact"}</Link>
