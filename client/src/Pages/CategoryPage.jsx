@@ -60,7 +60,7 @@ const CategoryPage = () => {
       if (categoryPage == null) {
         setPage(...cityPage);
       } else {
-        console.log("Le alterno si funciona");
+        // console.log("Le alterno si funciona");
         setPage(categoryPage);
       }
     };
@@ -82,7 +82,7 @@ const CategoryPage = () => {
     console.log(filteredPage[0]?.altLink);
   }
   const altLink = filteredPage && filteredPage[0] ? filteredPage[0].lanLink : 0;
-  console.log(filteredPage);
+  // console.log(filteredPage);
   return (
     <>
       <Helmet >

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 function categoryFilter() {
   const [cat, setCategories] = useState([]);
   const {urlProvince, urlCountry, lan} = useParams();
+  const [completeUrl, setCompleteUrl] = useState(false)
   const seof = lan == "es"? "bienes-raices-industriales" : "industrial-real-estate"
       try {
         useEffect(() => {
@@ -14,7 +15,18 @@ function categoryFilter() {
       } catch (error) {
         console.log(error);
       }
-      console.log(cat);
+      // Puede mejorarse las veces que hace fetch de la información console.log(cat);
+
+        useEffect(() =>{
+          const setCategoryState = async ()=>{
+            const provinceExist = await fetch(`https://industrylux.com/api/provinces/findByUrl/${urlProvince}`)
+          console.log("provincias existentes");
+          console.log(provinceExist);
+          provinceExist === null || provinceExist == undefined ? setCompleteUrl(false) : setCompleteUrl(true)
+          }
+        }, [urlProvince])
+      
+        
   return (
     <>
       {/* <a>Categories </a>
@@ -28,7 +40,7 @@ function categoryFilter() {
                                  ))}
                                 </ul> */}
 
-          {urlProvince?  
+          {completeUrl === false? 
           <>
             <a>Categories </a>
                 <ul>
