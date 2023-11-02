@@ -2,7 +2,7 @@ import React from 'react'
 
 function PropertyBanner({img}){
   const data = img && img[0] && img[0].imgCover ? img[0].imgCover : img;
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="propertyBannerContainer">

@@ -5,6 +5,7 @@ function categoryFilter() {
   const [cat, setCategories] = useState([]);
   const {urlProvince, urlCountry, lan} = useParams();
   const [completeUrl, setCompleteUrl] = useState(false)
+  const [provinceExist, setProvinceExist] = useState([])
   const seof = lan == "es"? 
   "bienes-raices-industriales" : "industrial-real-estate"
       try {
@@ -19,31 +20,34 @@ function categoryFilter() {
       // Puede mejorarse las veces que hace fetch de la información console.log(cat);
 
         useEffect(() =>{
-          const setCategoryState = async ()=>{
-            const provinceExist = await fetch(`https://industrylux.com/api/provinces/findByUrl/${urlProvince}`)
-          console.log("provincias existentes");
-          console.log(provinceExist);
-          provinceExist === null || provinceExist == undefined ? setCompleteUrl(false) : setCompleteUrl(true)
+
+            const setCategoryState = async () => {
+              console.log(urlProvince);
+              await fetch(`https://industrylux.com/api/provinces/findByUrlProvince/${urlProvince}`)
+                .then((response) => { return response.json()})
+                .then((data) => {
+                  setProvinceExist(data);
+                  setCompleteUrlFunction()
+                });
+            };
+          
+          const setCompleteUrlFunction = () =>{
+            if (!provinceExist || (Array.isArray(provinceExist) && provinceExist.length === 0)) {
+              setCompleteUrl(false);
+            } else {
+              setCompleteUrl(true);
+            }
+            
           }
 
           setCategoryState()
+          
         }, [urlProvince, urlCountry, lan])
       
         const categoriesLan = cat.filter(element => element.lenguage === lan);
   return (
     <>
-      {/* <a>Categories </a>
-                                <ul>
-                                {categories
-                                .filter(category => category.urlProvince === urlProvince &&  category.lenguage === lan)
-                                .map(category =>(
-                                <li key={category._id}>
-                                            <Link to={`/${lan}/${seof}/${urlCountry}/${urlProvince}/${category.urlCategory}`}><a> {category.categoryTitle}</a></Link>
-                                </li>
-                                 ))}
-                                </ul> */}
-
-          {completeUrl === false? 
+          {provinceExist.length > 0? 
           <>
             <a>Categories </a>
                 <ul className='categoryMenu'>
