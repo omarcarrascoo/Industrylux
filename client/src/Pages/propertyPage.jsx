@@ -9,12 +9,12 @@ import { Helmet } from 'react-helmet';
 import Header from '../components/Header';
 import ContactC from '../components/ContactC';
 function PropertyPage() {
-const { urlProperty } = useParams();
+const { urlProperty, category2 } = useParams();
 const [properties, setProperties] = useState([])
 const [showMore, setShowMore] = useState(false);
 const maxCharacters = 500;
 const fetchProperties =()=>{
-  fetch(`https://industrylux.com/api/industrialProperties/findByUrl/${urlProperty}`)
+  fetch(`https://industrylux.com/api/industrialProperties/findByUrlandCategory/${urlProperty}/${category2}`)
   .then(response =>{
     return response.json()
   })
