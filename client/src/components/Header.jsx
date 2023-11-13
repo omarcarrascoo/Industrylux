@@ -9,10 +9,11 @@ import CategoryFilter from './categoryFilter';
 
 const Header = ({alt}) => {
   const {urlProvince, urlCountry, lan} = useParams();
-  
-  // const { lan } = useParams();
-  
-  // console.log(urlProvince);
+  const [isClicked, setIsClicked] = useState(false);
+  const handleClick = () => {
+    console.log("clicked");
+    setIsClicked(!isClicked);
+  };
 
   const [countries, setCountries] = useState([]);
   const [provinces, setProvinces] = useState([]);
@@ -38,6 +39,7 @@ const Header = ({alt}) => {
   }, [urlProvince, urlCountry, lan]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleMenuToggle = () => {
+    
     setIsMenuOpen(!isMenuOpen);
   };
   const optionlan = lan == "es" ? "/en" : "/es"
@@ -74,6 +76,54 @@ const Header = ({alt}) => {
                                 {province.provinceName}
                               </Link>
                               <ul>
+                                {developments
+                                  .filter(development => development.urlProvince === province.urlProvince &&  development.lenguage === lan).map(development => (
+                                <li key={development._id}>
+                                <Link to={`/${lan}/${seof}/${country.urlCountry}/${province.urlProvince}/${development.urlCity}`}>
+                                {development.cityName}
+                              </Link>
+                              {/* <ul>
+                                
+                              </ul> */}
+                            </li>
+                          ))}
+                              </ul>
+                            </li>
+                          ))}
+                      </ul>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+              <li>
+                <CategoryFilter urlProvince={urlProvince} urlCountry={urlCountry} />
+              </li>
+              <li>
+                <Link to={`/${lan}/${seof}/contacto`}>{lan == "es" ? "Contacto" : "Contact"}</Link>
+              </li>
+              <li>
+                <Link to={alt}>{lan == "es" ? "English" : "Español"}</Link>
+              </li>
+            </ul>
+          </nav>
+          <nav className={`mainNavResponsive ${isMenuOpen ? 'open' : ''}`}>
+            <ul>
+              <li>
+                <a  onClick={handleClick}>{lan == "es" ? "Propiedades" : "Properties"}</a>
+                <ul className={isClicked ? 'activeMenu' : ''}>
+                  {countries.filter(country => country.lenguage === lan)
+                  .map(country => (
+                    <li key={country._id}>
+                      <Link to={`/${lan}/${seof}/${country.urlCountry}`}>{country.countryName}</Link>
+                      <ul className={isClicked ? 'activeMenu' : ''}>
+                        {provinces
+                          .filter(province => province.country === country.urlCountry &&  province.lenguage === lan)
+                          .map(province => (
+                            <li key={province._id}>
+                              <Link to={`/${lan}/${seof}/${country.urlCountry}/${province.urlProvince}`}>
+                                {province.provinceName}
+                              </Link>
+                              <ul className={isClicked ? 'activeMenu' : ''}>
                                 {developments
                                   .filter(development => development.urlProvince === province.urlProvince &&  development.lenguage === lan).map(development => (
                                 <li key={development._id}>

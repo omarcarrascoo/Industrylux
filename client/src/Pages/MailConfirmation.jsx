@@ -9,9 +9,9 @@ function MailConfirmation() {
         <Header/>
         <div className="confirmationMail">
           <div className="confirmationMailContainer">
-            <p>{lan == "es" ? "Tu información se ha enviado con éxito." : "Lo sentimos, hubo un problema al mandar el correo"}</p>
+            <p>{lan == "es" ? "Tu información se ha enviado con éxito." : "Your information has been successfully submitted."}</p>
 
-            <p>{lan == "es" ? "En breve nos pondremos en contacto para una primer entrevista." : "Intenta mas tarde"}</p>
+            <p>{lan == "es" ? "En breve nos pondremos en contacto para una primer entrevista." : "We will contact you shortly for a first interview."}</p>
               
           </div>
         </div>
