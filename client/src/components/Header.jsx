@@ -37,7 +37,6 @@ const Header = ({alt}) => {
       .then(data => setCategories(data));
   }, [urlProvince, urlCountry, lan]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };

@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet';
 import Header from '../components/Header';
 import ContactC from '../components/ContactC';
 function PropertyPage() {
-const { urlProperty, category2 } = useParams();
+const { urlProperty, category2, lan } = useParams();
 const [properties, setProperties] = useState([])
 const [showMore, setShowMore] = useState(false);
 const maxCharacters = 500;
@@ -24,7 +24,7 @@ const fetchProperties =()=>{
 }
 useEffect(()=>{
   fetchProperties()
-},[])
+},[lan, urlProperty])
 const toggleShowMore = () => {
   setShowMore(!showMore);
 };
