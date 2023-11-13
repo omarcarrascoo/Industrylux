@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-function categoryFilter() {
+function categoryFilter({menuOpen}) {
   const [cat, setCategories] = useState([]);
   const {urlProvince, urlCountry, lan} = useParams();
   const [completeUrl, setCompleteUrl] = useState(false)
@@ -57,7 +57,7 @@ function categoryFilter() {
                 <ul className={isClicked ? 'activeMenu categoryMenu' : ''}>
                   {categoriesLan.map(category =>(
                                   <li key={category._id}>
-                                              <Link to={`/${lan}/${seof}/${urlCountry}/${urlProvince}/${category.urlCategory}`}><a> {category.categoryTitle}</a></Link>
+                                              <Link onClick={menuOpen} to={`/${lan}/${seof}/${urlCountry}/${urlProvince}/${category.urlCategory}`}><a> {category.categoryTitle}</a></Link>
                                   </li>
                                   ))}
                 </ul>
@@ -68,7 +68,7 @@ function categoryFilter() {
               <ul className={isClicked ? 'activeMenu categoryMenu' : ''}>
                 {categoriesLan.map(category =>(
                                 <li key={category._id}>
-                                            <Link to={`/${lan}/${seof}/${urlCountry}/${category.urlCategory}`}><a> {category.categoryTitle}</a></Link>
+                                            <Link onClick={menuOpen} to={`/${lan}/${seof}/${urlCountry}/${category.urlCategory}`}><a> {category.categoryTitle}</a></Link>
                                 </li>
                                 ))}
               </ul>

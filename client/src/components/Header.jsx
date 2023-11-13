@@ -144,7 +144,7 @@ const Header = ({alt}) => {
                 </ul>
               </li>
               <li>
-                <CategoryFilter urlProvince={urlProvince} urlCountry={urlCountry} />
+                <CategoryFilter menuOpen ={handleMenuToggle} urlProvince={urlProvince} urlCountry={urlCountry} />
               </li>
               <li>
                 <Link to={`/${lan}/${seof}/contacto`}>{lan == "es" ? "Contacto" : "Contact"}</Link>
