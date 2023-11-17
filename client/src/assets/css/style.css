@@ -43,7 +43,7 @@ p{
 .container__indexHeader a{
     color: #f2f2f2;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 18px;
 }
 .index__main{
     display: flex;
@@ -65,10 +65,10 @@ p{
 }
 
 .index__main__titles h1{
-    font-size: 32px;
+    font-size: 24px;
 }
 .index__main__titles h2{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 200;
 }
 .index__body__texts{
@@ -109,6 +109,8 @@ p{
 .countryCardTexts h3{
     font-size: 16px;
     font-weight: 200;
+    text-decoration: underline;
+    font-weight: 500;
 }
 
 .indexFooter{
@@ -164,7 +166,7 @@ p{
     align-items: center;
 }
 .mainHeaderLogo{
-    width: 20%;
+    width: 25%;
 }
 .mainHeaderLogo img{
     width: 100%;
@@ -200,7 +202,7 @@ p{
 }
 .mainNav ul li a{
     text-decoration: none;
-    font-size: 18px;
+    font-size: 14px;
     display: block;
     padding: 7px 15px;
     color: #fff;
@@ -317,6 +319,10 @@ p{
     text-align: center;
     font-weight: 400;
     margin: 30px 0;
+    font-size: 24px;
+}
+.propertyPageTexts h2{
+    font-size: 20px;
 }
 .propertyPageTexts{
     text-align: justify;
@@ -431,11 +437,11 @@ p{
     margin-top: 30PX;
 }
 .pageDescriptionTexts h1{
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 300;
 }
 .pageDescriptionTexts h2{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
 }
 /* BANER LOADER */
@@ -472,7 +478,7 @@ p{
 .countryCardTextsProperty h3{
     color: #f2f2f2;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 20px;
     margin-top: 10px;
     font-weight: 400;
 }
