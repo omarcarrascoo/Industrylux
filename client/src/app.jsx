@@ -25,6 +25,7 @@ function App() {
       
         {/* <Route path="/" element={<Index />} /> */}
         <Route path="/" element={<Navigate to="/es/bienes-raices-industriales"/> } />
+        <Route  path="/:lan" element={<Navigate to="/en/industrial-real-estate"/> }/>
         <Route  path="/:lan/:seof" element={<Index/>}/>
         <Route path="/:lan/:seof/contacto" element={<Contacto />} />
         <Route path="/:lan/:seof/:urlCountry" element={<CountryPage />} />
