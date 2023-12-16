@@ -36,7 +36,7 @@ const CountryPage = () =>{
     fetchProperties();
   }, [urlCountry]);
 
-  const propertiesFilter = properties.filter(element => element.lenguage === lan);
+  const propertiesFilter = properties.filter(element => element.lenguage === lan && element.status == true);
   const filteredHomeInfo = page.filter(element => element.lenguage === lan);
   const altLink = filteredHomeInfo && filteredHomeInfo[0] ? filteredHomeInfo[0].lanLink : 0;
     // PUede mejorarse las veces que filtra la informacion console.log(filteredHomeInfo);

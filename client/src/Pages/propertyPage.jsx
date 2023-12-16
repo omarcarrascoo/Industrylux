@@ -1,10 +1,9 @@
-import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import BannerLoader from '../components/bannerLoader';
-import PageDescription from '../components/pageDescription';
-import PropertiesLoader from '../components/propertiesLoader';  
-import Contacto from './Contacto';
+// import PageDescription from '../components/pageDescription';
+// import PropertiesLoader from '../components/propertiesLoader';  
+// import Contacto from './Contacto';
 import { Helmet } from 'react-helmet';
 import Header from '../components/Header';
 import ContactC from '../components/ContactC';
